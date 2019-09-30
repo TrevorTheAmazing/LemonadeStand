@@ -10,7 +10,7 @@ namespace LemonadeStand.ClassFiles.Game
     class Player
     {
         //memb vars
-        public string Name;
+        public string name;
         public bool isAtStore;
         public Inventory inventory;
         public Wallet wallet;
@@ -20,7 +20,7 @@ namespace LemonadeStand.ClassFiles.Game
 
         public Player()
         {
-            Name = "Name of Player";
+            name = SetPlayerName();
             isAtStore = false;
             inventory = new Inventory();
             wallet = new Wallet();
@@ -30,7 +30,21 @@ namespace LemonadeStand.ClassFiles.Game
         }
 
         //memb meths
-        //SetPlayerName()
+        public string SetPlayerName()
+        {
+            string tempPlayerName = "";
+            try
+            {
+                tempPlayerName = Console.ReadLine();
+            }            
+            catch
+            {
+                tempPlayerName = "Player Name try(catch)";
+            }
+            tempPlayerName = "Name of Player";
+            return tempPlayerName;
+        }
+
         //GoToStore()
         //
     }

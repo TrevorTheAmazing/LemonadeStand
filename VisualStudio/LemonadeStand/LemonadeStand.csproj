@@ -46,6 +46,7 @@
     <Compile Include="ClassFiles\Game\Day\Customer.cs" />
     <Compile Include="ClassFiles\Game\Day\Day.cs" />
     <Compile Include="ClassFiles\Game\Day\Weather.cs" />
+    <Compile Include="Game.cs" />
     <Compile Include="ClassFiles\Game\Player.cs" />
     <Compile Include="ClassFiles\Game\Store\Store.cs" />
     <Compile Include="ClassFiles\PlayerItems\Inventory.cs" />
