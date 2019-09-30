@@ -43,6 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClassFiles\Items\Item.cs" />
+    <Compile Include="ClassFiles\Items\Cup.cs" />
+    <Compile Include="ClassFiles\Items\IceCube.cs" />
+    <Compile Include="ClassFiles\Items\SugarCube.cs" />
+    <Compile Include="ClassFiles\Items\Lemon.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
