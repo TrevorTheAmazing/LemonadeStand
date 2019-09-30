@@ -9,18 +9,21 @@ namespace LemonadeStand.ClassFiles.Items
 {
     public class Lemon : Item
     {
-        //memb vars FOR LEMONS        
+        //memb vars FOR LEMONS    
+        //public int Quantity;
 
         //constructor FOR LEMON
         //public Lemon(string Name, double Price)
         public Lemon()
         {
-            this.Name = "Lemon";
+            this.name = "Lemon";
+            this.quantity = 0;
 
             //defaults
             //color = "yellow"
         }
 
         //memb meth FOR LEMONS
-    }
+        //
+    }   
 }

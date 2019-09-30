@@ -43,11 +43,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClassFiles\Items\Item.cs" />
-    <Compile Include="ClassFiles\Items\Cup.cs" />
-    <Compile Include="ClassFiles\Items\IceCube.cs" />
-    <Compile Include="ClassFiles\Items\SugarCube.cs" />
-    <Compile Include="ClassFiles\Items\Lemon.cs" />
+    <Compile Include="ClassFiles\Game\Day\Customer.cs" />
+    <Compile Include="ClassFiles\Game\Day\Day.cs" />
+    <Compile Include="ClassFiles\Game\Day\Weather.cs" />
+    <Compile Include="ClassFiles\Game\Player.cs" />
+    <Compile Include="ClassFiles\Game\Store\Store.cs" />
+    <Compile Include="ClassFiles\PlayerItems\Inventory.cs" />
+    <Compile Include="ClassFiles\InventoryItems\Item.cs" />
+    <Compile Include="ClassFiles\InventoryItems\Cup.cs" />
+    <Compile Include="ClassFiles\InventoryItems\IceCube.cs" />
+    <Compile Include="ClassFiles\PlayerItems\Pitcher.cs" />
+    <Compile Include="ClassFiles\InventoryItems\SugarCube.cs" />
+    <Compile Include="ClassFiles\InventoryItems\Lemon.cs" />
+    <Compile Include="ClassFiles\PlayerItems\Wallet.cs" />
+    <Compile Include="ClassFiles\PlayerItems\Recipe.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

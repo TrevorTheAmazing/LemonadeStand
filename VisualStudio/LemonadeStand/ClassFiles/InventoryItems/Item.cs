@@ -9,7 +9,8 @@ namespace LemonadeStand.ClassFiles.Items
     public abstract class Item
     {
         //memb vars
-        public string Name;
+        public string name;
+        public int quantity;
 
         //constructor FOR ANY ITEM
         public Item()
