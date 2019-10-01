@@ -24,13 +24,25 @@ namespace LemonadeStand.ClassFiles.Game.Day
             timeRemaining = 100.0;
             
             //add 100 customers to the list each day
-            customers = Customer.names;
+            customers = BuildDailyCustomerList(customers);
             
             //day complete.
             
         }
 
         //memb meths
-        
+        public List<Customer> BuildDailyCustomerList(List<Customer> CustomerListIn)
+        {
+            //create a new customer and name it
+            for (int i = 0; i < CustomerListIn.Count; i++)
+            {
+                Customer tempCustomer = new Customer();
+
+                //does this work for string concat?
+                tempCustomer.name += i;
+                CustomerListIn.Add(tempCustomer);
+            }
+            return CustomerListIn;
+        }
     }
 }

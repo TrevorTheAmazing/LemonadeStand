@@ -16,26 +16,26 @@ namespace LemonadeStand.ClassFiles.Game
 
         public Game()
         {
-            string tempName = "";
-
-            //begin the game
-            Console.WriteLine("now in Game()");
+            //set up player
             Console.WriteLine("Hello, Player.  Please enter your name!");
+
             do
             {
                 player.SetPlayerName();
             } while (!string.IsNullOrEmpty(player.name));
             
+            //set up days
             //create a Day list with 7 Day items having a temperature
             for (int i = 0; i < 7; i++)
             {
                 days.Add(new Day.Day());
             }
+
+            //set up store when the player wants to use it
             
         }
-        
-        //memb meths
 
+        //memb meths
 
 
     }
