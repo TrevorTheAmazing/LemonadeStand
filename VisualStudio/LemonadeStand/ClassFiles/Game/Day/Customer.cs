@@ -19,15 +19,15 @@ namespace LemonadeStand.ClassFiles.Game.Day
         }
 
         //memb meths
-        private List<string> BuildNewCustomerNamesList(List<string> CustomerNamesListIn)
-        {
-            Random random = new Random();
-            for (int i = 0; i < 100; i++)
-            {
-                CustomerNamesListIn.Add(this.name + random.Next(1, 1001));
-            }
+        //private List<string> BuildNewCustomerNamesList(List<string> CustomerNamesListIn)
+        //{
+        //    Random random = new Random();
+        //    for (int i = 0; i < 100; i++)
+        //    {
+        //        CustomerNamesListIn.Add(this.name + random.Next(1, 1001));
+        //    }
 
-            return CustomerNamesListIn;
-        }
+        //    return CustomerNamesListIn;
+        //}
     }
 }

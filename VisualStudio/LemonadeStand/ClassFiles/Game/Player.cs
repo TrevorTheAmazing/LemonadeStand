@@ -68,13 +68,13 @@ namespace LemonadeStand.ClassFiles.Game
 
         public void SetRecipe()
         {
-            Console.WriteLine("enter the number of lemons:");
+            Console.WriteLine("enter the number of lemons in your recipe:");
             recipe.amountOfLemons = Int32.Parse(Console.ReadLine());
-            Console.WriteLine("enter the number of sugar cubes:");
+            Console.WriteLine("enter the number of sugar cubes in your recipe:");
             recipe.amountOfSugarCubes = Int32.Parse(Console.ReadLine());
-            Console.WriteLine("enter the number of ice cubes:");
+            Console.WriteLine("enter the number of ice cubes in your recipe:");
             recipe.amountOfIceCubes = Int32.Parse(Console.ReadLine());
-            Console.WriteLine("enter the price per cup:");
+            Console.WriteLine("enter the price per cup of your recipe:");
             recipe.pricePerCup = Double.Parse(Console.ReadLine());
         }
 
@@ -83,7 +83,7 @@ namespace LemonadeStand.ClassFiles.Game
             Console.WriteLine("You are now at the store.");
             //store.OpenStore();
             isAtStore = true;
-            Store.Store.OpenStore();
+//            Store.Store.OpenStore();
         }
         public void LeaveStore()
         {

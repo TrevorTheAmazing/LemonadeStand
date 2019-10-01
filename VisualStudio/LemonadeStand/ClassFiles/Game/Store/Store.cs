@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LemonadeStand.ClassFiles.Game;
 
 namespace LemonadeStand.ClassFiles.Game.Store
 {
@@ -23,6 +24,10 @@ namespace LemonadeStand.ClassFiles.Game.Store
         //decrease money with 
         public static void OpenStore()
         {
+            bool leaveStore = false;
+
+            do
+            {
                 //do Store things
                 Console.WriteLine("Please buy something.");
                 Console.ReadLine();
@@ -32,20 +37,28 @@ namespace LemonadeStand.ClassFiles.Game.Store
                 Console.WriteLine();
                 Console.WriteLine("9 - Leave the store.");
 
-                string tempInput = Console.ReadLine();
+                string tempInput = "";
 
-                bool leaveStore = false;
+                try
+                {
+                    tempInput = Console.ReadLine();
+                }
+                catch(Exception)
+                {
+                    tempInput = "9";
+                }
+
                 switch (tempInput)
                 {
 
                     case ("0"):
-                        Console.WriteLine("You bought lemons.");
+                        BuyStuff("lemon");
                         break;
                     case ("1"):
-                        Console.WriteLine("You bought sugar cube.");
+                        BuyStuff("sugarCube");
                         break;
                     case ("2"):
-                        Console.WriteLine("You bought ice cube.");
+                        BuyStuff("iceCube");
                         break;
                     case ("9"):
                         leaveStore = true;
@@ -54,7 +67,28 @@ namespace LemonadeStand.ClassFiles.Game.Store
                     default:
                         break;
                 }
-        }        
+
+            } while (!leaveStore);
+
+        }     
+        
+        private static void BuyStuff(string itemToBuy)
+        {
+            switch (itemToBuy)
+            {
+                case "lemons":
+                    Console.WriteLine("You bought then lemon.");
+                    break;
+                case "sugarCube":
+                    Console.WriteLine("You bought the sugar cube.");
+                    break;
+                case "iceCube":
+                    Console.WriteLine("You bought the ice cube.");
+                    break;
+                default:
+                    break;
+            }
+        }
     
         public static void CloseStore()
         {

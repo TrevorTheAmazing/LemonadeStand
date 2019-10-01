@@ -13,6 +13,7 @@ namespace LemonadeStand.ClassFiles.Game.Day
         public Weather weather;
         public List<Customer> customers = new List<Customer>();
         public double timeRemaining;
+        private int customerCount = 100;
 
         //constructor
         public Day()
@@ -24,25 +25,27 @@ namespace LemonadeStand.ClassFiles.Game.Day
             timeRemaining = 100.0;
             
             //add 100 customers to the list each day
-            customers = BuildDailyCustomerList(customers);
+            customers = BuildDailyCustomerList( customers, customerCount);
             
             //day complete.
             
         }
 
         //memb meths
-        public List<Customer> BuildDailyCustomerList(List<Customer> CustomerListIn)
+        public List<Customer> BuildDailyCustomerList( List<Customer> customersIn, int customerCountIn)//List<Customer> CustomerListIn,
+        //public List<Customer> BuildDailyCustomerList()
         {
-            //create a new customer and name it
-            for (int i = 0; i < CustomerListIn.Count; i++)
+            //create a new customer and name it            
+            //for (int i = 0; i < CustomerListIn.Count; i++)
+            for (int i = 0; i < customerCountIn; i++)
             {
                 Customer tempCustomer = new Customer();
 
                 //does this work for string concat?
                 tempCustomer.name += i;
-                CustomerListIn.Add(tempCustomer);
+                customersIn.Add(tempCustomer);
             }
-            return CustomerListIn;
+            return customersIn;
         }
     }
 }
