@@ -11,14 +11,25 @@ namespace LemonadeStand.ClassFiles.Game
     public class Game
     {
         //memb vars
-        //Player player = new Player();
-//        LemonadeStand.ClassFiles.Game.Store.Store store = new LemonadeStand.ClassFiles.Game.Store.Store();
         List<LemonadeStand.ClassFiles.Game.Day.Day> days = new List<LemonadeStand.ClassFiles.Game.Day.Day>();
         public int currentDay;
+        private bool gameIsSetUp = false;
 
         public Game()
         {
-            SetupGame();
+            do
+            {
+                SetupGame();                
+            } while (!gameIsSetUp);
+
+            if (gameIsSetUp)
+            {
+                //start the game
+                PlayGame();
+            }
+
+            Console.WriteLine("Game is now over.  Thank you for playing!  yay");
+            
         }
 
         //memb meths
@@ -92,15 +103,21 @@ namespace LemonadeStand.ClassFiles.Game
                     Store.Store.CloseStore();
                 }
                 
-            }            
-            //start the game
-            PlayGame();
+            }
+            gameIsSetUp = true;
         }
 
         public void PlayGame()
         {
             Console.WriteLine("PLAY GAME NOW!!");
             Console.ReadLine();
+            for (int i = 0; i<days.Count; i++)
+            {
+                currentDay = (i+1);
+                Console.WriteLine("Day #" + currentDay);
+
+                //start the day countdown timer
+            }
         }
 
 

@@ -10,7 +10,7 @@ namespace LemonadeStand.ClassFiles.Game.Store
     public static class Store
     {
         //memb vars
-        //public Player player;
+        //public static Player player;
 
         //constructor
         //public Store()
@@ -62,7 +62,6 @@ namespace LemonadeStand.ClassFiles.Game.Store
                         break;
                     case ("9"):
                         leaveStore = true;
-                        Console.WriteLine("LEAVE STORE");
                         break;
                     default:
                         break;
