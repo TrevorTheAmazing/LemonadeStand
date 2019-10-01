@@ -21,6 +21,8 @@ namespace LemonadeStand.ClassFiles.PlayerItems
             this.amountOfIceCubes = 0;
             this.pricePerCup = 0.00; 
         }
+        
         //memb methods
+
     }
 }
