@@ -10,7 +10,7 @@ namespace LemonadeStand.ClassFiles.PlayerItems
     {
         //memb vars
         public bool increase;
-        public float amount;
+        public double amount;
         private double money;
         public double Money
         {

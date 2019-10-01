@@ -6,18 +6,26 @@ using System.Threading.Tasks;
 
 namespace LemonadeStand.ClassFiles.Game.Store
 {
-    public class Store
+    public static class Store
     {
         //memb vars
-        Player player;
+        //public Player player;
 
         //constructor
-        public Store()
+        //public Store()
+        //{
+
+        //}
+
+        //memb meths
+        //BuyStuff()
+        //increase inventory
+        //decrease money with 
+        public static void OpenStore()
         {
-            while (player.IsAtStore)
-            {
                 //do Store things
                 Console.WriteLine("Please buy something.");
+                Console.ReadLine();
                 Console.WriteLine("0 - Buy lemons.");
                 Console.WriteLine("1 - Buy sugar cubes.");
                 Console.WriteLine("2 - Buy ice cubes.");
@@ -29,7 +37,7 @@ namespace LemonadeStand.ClassFiles.Game.Store
                 bool leaveStore = false;
                 switch (tempInput)
                 {
-                    
+
                     case ("0"):
                         Console.WriteLine("You bought lemons.");
                         break;
@@ -45,26 +53,12 @@ namespace LemonadeStand.ClassFiles.Game.Store
                         break;
                     default:
                         break;
-                }                    
-
-                //option to set price per cup
-                Console.WriteLine("Would you like to adjust the price per cup?");
-                if (Console.ReadLine()=="y")
-                {
-                    player.SetPricePerCup();
                 }
+        }        
+    
+        public static void CloseStore()
+        {
 
-                if (leaveStore)
-                {
-                    player.LeaveStore();
-                }
-
-            }
         }
-
-        //memb meths
-        //BuyStuff()
-        //increase inventory
-        //decrease money with 
     }
 }

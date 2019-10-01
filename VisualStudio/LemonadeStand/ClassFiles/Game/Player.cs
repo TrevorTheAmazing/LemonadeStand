@@ -11,6 +11,7 @@ namespace LemonadeStand.ClassFiles.Game
     {
         //memb vars
         public string name;
+        //public static Store.Store;
         //public bool isAtStore;
         private bool isAtStore;
         public bool IsAtStore
@@ -80,7 +81,9 @@ namespace LemonadeStand.ClassFiles.Game
         public void GoToTheStore()
         {
             Console.WriteLine("You are now at the store.");
+            //store.OpenStore();
             isAtStore = true;
+            Store.Store.OpenStore();
         }
         public void LeaveStore()
         {
