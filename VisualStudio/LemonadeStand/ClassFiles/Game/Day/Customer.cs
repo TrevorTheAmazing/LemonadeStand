@@ -9,17 +9,31 @@ namespace LemonadeStand.ClassFiles.Game.Day
     class Customer
     {        
         //memb vars
-        List<string> names = new List<string>();
+        private List<string> names = new List<string>();
         public string name;
 
         //constructor
         public Customer()
         {
-            this.name = "Customer";            
-            //call "AddCustomerToList(CustomerName)" add the customer to the list?
+            this.name = "Customer";
+            //call "AddCustomerToList(CustomerName)" add the customer to the list? - no; doing it in Day().
+            this.names = BuildNewCustomerList();
         }
 
         //memb meths
-        //AddCustomerToList(CustomerNameIn)
-    }
+        //AddCustomerToList(CustomerNameIn) - no; doing it in Day().
+        public List<string> BuildNewCustomerList()
+        {
+            for (int i = 0; i < 100; i++)
+            {
+                Customer tempCustomer = new Customer();
+                tempCustomer.name = tempCustomer.name + i;
+
+                names.Add(tempCustomer.name);
+            }
+
+            return names;
+        }
+
+}
 }

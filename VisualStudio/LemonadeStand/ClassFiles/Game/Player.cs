@@ -20,7 +20,8 @@ namespace LemonadeStand.ClassFiles.Game
 
         public Player()
         {
-            name = SetPlayerName();
+            //name = SetPlayerName();
+            name = "";
             isAtStore = false;
             inventory = new Inventory();
             wallet = new Wallet();
@@ -30,19 +31,33 @@ namespace LemonadeStand.ClassFiles.Game
         }
 
         //memb meths
-        public string SetPlayerName()
+        public void SetPlayerName()
         {
             string tempPlayerName = "";
             try
             {
                 tempPlayerName = Console.ReadLine();
-            }            
-            catch
-            {
-                tempPlayerName = "Player Name try(catch)";
             }
-            tempPlayerName = "Name of Player";
-            return tempPlayerName;
+            catch (Exception)
+            {
+                //tempPlayerName = "Name of Player";
+                SetPlayerName();
+            }
+            finally
+            {
+                if (!string.IsNullOrEmpty(tempPlayerName))
+                {
+                    this.name = tempPlayerName;
+                    //return tempPlayerName;
+                }
+                else
+                {
+                    SetPlayerName();
+                    //return "";
+                }
+            }
+
+            //return tempPlayerName;
         }
 
         //GoToStore()
