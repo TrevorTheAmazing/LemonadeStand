@@ -118,7 +118,7 @@ namespace LemonadeStand.ClassFiles.Game
         {
             string tempRecipe = ("Your recipe calls for " +
                 recipe.amountOfLemons.ToString() + " lemons, " +
-                recipe.amountOfSugarCubes.ToString() + " sugar cubes, and" +
+                recipe.amountOfSugarCubes.ToString() + " sugar cubes, and " +
                 recipe.amountOfIceCubes.ToString() + " ice cubes.");
 
             return tempRecipe;
@@ -134,6 +134,17 @@ namespace LemonadeStand.ClassFiles.Game
             double priceOfIceCubes = ((recipe.amountOfIceCubes) * (tempIceCube.itemPrice));
 
             return (priceOfLemons + priceOfSugarCubes + priceOfIceCubes);
+        }
+
+        public string InventoryReport()
+        {
+            string tempInventory = "INVENTORY RESULTS";
+            tempInventory += inventory.lemons.Count + " lemons, " + 
+                inventory.sugarCubes.Count + " sugar cubes, and " + 
+                inventory.iceCubes.Count + " ice cubes." + Environment.NewLine + 
+                "You also have " + inventory.cups.Count + " cups.";
+
+            return tempInventory;
         }
     }
 }

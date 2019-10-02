@@ -38,11 +38,14 @@ namespace LemonadeStand.ClassFiles.Game.Store
                 Console.WriteLine("");
                 Console.WriteLine("You have $" + tempMoney.ToString() + " money.");
                 Console.WriteLine("");
+                //INVENTORY REPORT HERE
+                Console.WriteLine(player.InventoryReport());
+                Console.WriteLine("You have _INVENTORYREPORT.");
                 Console.WriteLine("0 - Buy lemons.");
                 Console.WriteLine("1 - Buy sugar cubes.");
                 Console.WriteLine("2 - Buy ice cubes.");
                 Console.WriteLine("3 - Buy cups.");
-                Console.WriteLine();
+                Console.WriteLine("");
                 Console.WriteLine("9 - Leave the store.");
                 Console.WriteLine("");
                 Console.WriteLine("");

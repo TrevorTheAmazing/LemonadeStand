@@ -49,15 +49,20 @@ namespace LemonadeStand.ClassFiles.Game
             } while (string.IsNullOrEmpty(player.name));
 
             Console.WriteLine();
-            Console.WriteLine("Your name is now " + player.name + ".");
-            Console.WriteLine();
+            Console.WriteLine("Your name is now " + player.name + ".");         
             Console.WriteLine();
 
-            //store and receipt setup
-            Console.WriteLine("You will need to use a recipe to make lemonade.");
-            Console.WriteLine();
-            Console.WriteLine("You will need ingredient(s) to prepare that recipe.");
+            //recipe and store setup
+            Console.WriteLine("You will need to use a recipe to make lemonade.  Prepare to create your recipe!");
+            Console.WriteLine("");
+
+            //set the player's recipe
+            player.SetRecipe();
+            
+            Console.WriteLine("You will need ingredient(s) to prepare your recipe.");
+            Console.WriteLine("");
             Console.WriteLine("You can go to the store to buy supplies.  You will go to the store now.");
+            Console.WriteLine("");
             Console.WriteLine("You will prepare your recipe upon your return.");
             Console.ReadLine();
 
@@ -66,14 +71,11 @@ namespace LemonadeStand.ClassFiles.Game
             player = store.GoToTheStore();
             Console.ReadLine();
 
-            //set the player's recipe
-            Console.WriteLine("Please create a recipe now!");
-            player.SetRecipe();
-
-            Console.WriteLine("*RECIPE REPORT*");
+            Console.Clear;
+            Console.WriteLine("You return from the store.  Now you must prepare your recipe!  Only then will you have lemonade to sell.");
             Console.WriteLine(player.RecipeReport());
 
-
+            //
 
 
 
