@@ -33,7 +33,6 @@ namespace LemonadeStand.ClassFiles.Game
         }
 
         //memb meths
-
         public void SetupGame()
         {
             //set up player
@@ -50,10 +49,14 @@ namespace LemonadeStand.ClassFiles.Game
             Console.WriteLine();
             Console.WriteLine("Your name is now " + player.name + ".");
             Console.WriteLine();
+            Console.WriteLine();
 
             //set the player's recipe
             Console.WriteLine("You will need to use a recipe to make lemonade.");
+            Console.WriteLine();
             Console.WriteLine("Please create a recipe now!");
+            Console.WriteLine();
+            Console.WriteLine();
             player.SetRecipe();
 
             //set up days
@@ -67,15 +70,13 @@ namespace LemonadeStand.ClassFiles.Game
             Console.WriteLine("Today's weather was predicted to be " + (days[0].weather.predictedForecast) + ".");
             Console.ReadKey();
 
-            //set up store when the player wants to use it
+
+            //set up the store
             Console.WriteLine("You can go to the store to buy supplies.  You will go to the store now.");
             Console.ReadKey();
 
             ClassFiles.Game.Store.Store store = new Store.Store(player);
             player = store.GoToTheStore();
-
-            Console.WriteLine("Now set the price per cup!");
-            player.SetPricePerCup();
 
             gameIsSetUp = true;
         }

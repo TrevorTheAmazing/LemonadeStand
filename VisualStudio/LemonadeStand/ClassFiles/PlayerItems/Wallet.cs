@@ -33,15 +33,16 @@ namespace LemonadeStand.ClassFiles.PlayerItems
 
         public double AdjustMoney(bool increase, double amount)
         {
-            double tempAmount = amount;
             double tempMoney = CountMoney();
+            double tempAmount = amount;
+
             switch (increase)
             {
                 case (false):
                     //decrease money by amount
                     if (tempMoney >= tempAmount)
                     {
-                        tempMoney -= tempAmount;
+                        tempMoney = LessMoney(tempAmount);                        
                         return tempMoney;
                     }
                     else
@@ -50,12 +51,22 @@ namespace LemonadeStand.ClassFiles.PlayerItems
                     }
                 case (true):
                     //increase money by amount
-                    tempMoney += tempAmount;
+                    tempMoney = MoreMoney(tempAmount);
                     break;
                 default:                    
                     break;
             }
             return tempMoney;
+        }
+
+        private double MoreMoney(double amountIn)
+        {
+            return (money += amountIn);
+        }
+
+        private double LessMoney(double amountIn)
+        {
+            return (money -= amountIn);
         }
     }
 }

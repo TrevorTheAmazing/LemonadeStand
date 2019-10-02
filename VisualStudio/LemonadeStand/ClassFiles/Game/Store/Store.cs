@@ -28,10 +28,15 @@ namespace LemonadeStand.ClassFiles.Game.Store
         {
             bool leaveStore = false;
 
+            Console.Clear();
+
             do
             {
+                double tempMoney = player.wallet.CountMoney();
                 //do Store things
                 Console.WriteLine("Please buy something.");
+                Console.WriteLine("");
+                Console.WriteLine("You have $" + tempMoney.ToString() + " money.");
                 Console.WriteLine("");
                 Console.WriteLine("0 - Buy lemons.");
                 Console.WriteLine("1 - Buy sugar cubes.");
@@ -39,6 +44,13 @@ namespace LemonadeStand.ClassFiles.Game.Store
                 Console.WriteLine("3 - Buy cups.");
                 Console.WriteLine();
                 Console.WriteLine("9 - Leave the store.");
+
+                //recipe report
+                Console.WriteLine(player.RecipeReport());
+
+                ////report recipe cost
+                //double tempRecipeCost = player.GetRecipeCost();
+                //Console.WriteLine("the cost of your recipe is $" + tempRecipeCost);
 
                 string tempInput = "";
                 try
@@ -78,6 +90,12 @@ namespace LemonadeStand.ClassFiles.Game.Store
                 }
 
             } while (!leaveStore);
+
+            if (leaveStore)
+            {
+                LeaveTheStore();
+            }
+
             return player;
         }
 
@@ -89,34 +107,34 @@ namespace LemonadeStand.ClassFiles.Game.Store
                     Lemon tempLemon = new Lemon();
                     if (player.wallet.Money >= tempLemon.itemPrice)
                     {
-                        player.wallet.Money -= tempLemon.itemPrice;
+                        player.wallet.AdjustMoney(false, tempLemon.itemPrice);
                         player.inventory.lemons.Add(tempLemon);
                         Console.WriteLine("You bought 'lemon.'");
-                    }                    
+                    }
                     break;
                 case "sugarCube":
                     SugarCube tempSugarCube = new SugarCube();
                     if (player.wallet.Money >= tempSugarCube.itemPrice)
                     {
-                        player.wallet.Money -= tempSugarCube.itemPrice;
+                        player.wallet.AdjustMoney(false, tempSugarCube.itemPrice);
                         player.inventory.sugarCubes.Add(tempSugarCube);
                         Console.WriteLine("You bought 'sugar cube.'");
-                    }                    
+                    }
                     break;
                 case "iceCube":
                     IceCube tempIceCube = new IceCube();
                     if (player.wallet.Money >= tempIceCube.itemPrice)
                     {
-                        player.wallet.Money -= tempIceCube.itemPrice;
+                        player.wallet.AdjustMoney(false, tempIceCube.itemPrice);
                         player.inventory.iceCubes.Add(tempIceCube);
                         Console.WriteLine("You bought 'ice cube.'");
-                    }                        
+                    }
                     break;
                 case "cup":
                     Cup tempCup = new Cup();
                     if (player.wallet.Money >= tempCup.itemPrice)
                     {
-                        player.wallet.Money -= tempCup.itemPrice;
+                        player.wallet.AdjustMoney(false, tempCup.itemPrice);
                         player.inventory.cups.Add(tempCup);
                         Console.WriteLine("You bought 'cup.'");
                     }
@@ -124,7 +142,13 @@ namespace LemonadeStand.ClassFiles.Game.Store
                 default:
                     break;
             }
-        }
+            Console.ReadLine();
+        }//end SellStuff
 
+        private void LeaveTheStore()
+        {
+            Console.WriteLine("Now set the price per cup!");
+            player.SetPricePerCup();
+        }
     }
 }
