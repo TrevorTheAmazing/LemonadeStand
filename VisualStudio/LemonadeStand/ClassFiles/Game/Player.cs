@@ -138,8 +138,7 @@ namespace LemonadeStand.ClassFiles.Game
 
         public string InventoryReport()
         {
-            string tempInventory = "INVENTORY RESULTS";
-            tempInventory += inventory.lemons.Count + " lemons, " + 
+            string tempInventory = "You have " + inventory.lemons.Count + " lemons, " + 
                 inventory.sugarCubes.Count + " sugar cubes, and " + 
                 inventory.iceCubes.Count + " ice cubes." + Environment.NewLine + 
                 "You also have " + inventory.cups.Count + " cups.";

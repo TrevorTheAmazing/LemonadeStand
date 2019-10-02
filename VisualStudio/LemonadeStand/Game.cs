@@ -71,7 +71,7 @@ namespace LemonadeStand.ClassFiles.Game
             player = store.GoToTheStore();
             Console.ReadLine();
 
-            Console.Clear;
+            Console.Clear();
             Console.WriteLine("You return from the store.  Now you must prepare your recipe!  Only then will you have lemonade to sell.");
             Console.WriteLine(player.RecipeReport());
 
