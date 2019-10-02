@@ -14,13 +14,6 @@ namespace LemonadeStand.ClassFiles.Game
     {
         //memb vars
         public string name;
-        //public static Store.Store;
-        //public bool isAtStore;
-        private bool isAtStore;
-        public bool IsAtStore
-        {
-            get => isAtStore;
-        }
         public Inventory inventory;
         public Wallet wallet;
         public Recipe recipe;
@@ -30,9 +23,7 @@ namespace LemonadeStand.ClassFiles.Game
 
         public Player()
         {
-            //name = SetPlayerName();
             name = "";
-            isAtStore = false;
             inventory = new Inventory();
             wallet = new Wallet();
             recipe = new Recipe();
@@ -117,7 +108,7 @@ namespace LemonadeStand.ClassFiles.Game
 
         public string RecipeReport()
         {
-            return ("Your recipe is calls for " + GetRecipe() + "." + Environment.NewLine +
+            return (GetRecipe() + "." + Environment.NewLine +
                 "The cost of your recipe is $" + GetRecipeCost() + "." + Environment.NewLine +
                 "You will charge $" + recipe.pricePerCup + " per cup.");
 
@@ -126,9 +117,9 @@ namespace LemonadeStand.ClassFiles.Game
         private string GetRecipe()
         {
             string tempRecipe = ("Your recipe calls for " +
-                recipe.amountOfLemons.ToString() + "lemons, " +
-                recipe.amountOfSugarCubes.ToString() + "sugar cubes, and" +
-                recipe.amountOfIceCubes.ToString() + ".");
+                recipe.amountOfLemons.ToString() + " lemons, " +
+                recipe.amountOfSugarCubes.ToString() + " sugar cubes, and" +
+                recipe.amountOfIceCubes.ToString() + " ice cubes.");
 
             return tempRecipe;
         }

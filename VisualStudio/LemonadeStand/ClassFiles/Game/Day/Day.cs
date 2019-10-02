@@ -32,7 +32,7 @@ namespace LemonadeStand.ClassFiles.Game.Day
         }
 
         //memb meths
-        public List<Customer> BuildDailyCustomerList( List<Customer> customersIn, int customerCountIn)//List<Customer> CustomerListIn,
+        public List<Customer> BuildDailyCustomerList( List<Customer> customersIn, int customerCountIn)
         //public List<Customer> BuildDailyCustomerList()
         {
             //create a new customer and name it            

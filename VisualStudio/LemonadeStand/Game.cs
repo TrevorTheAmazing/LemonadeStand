@@ -39,7 +39,9 @@ namespace LemonadeStand.ClassFiles.Game
             Player player = new Player();
 
             //set the player's name
-            Console.WriteLine("Hello, Player.  Please enter your name!");
+            Console.WriteLine("Hello, Player.  Welcome to 'Lemonade Stand' game!");
+            Console.WriteLine("");
+            Console.WriteLine("Please enter your name!");
 
             do
             {
@@ -51,13 +53,30 @@ namespace LemonadeStand.ClassFiles.Game
             Console.WriteLine();
             Console.WriteLine();
 
-            //set the player's recipe
+            //store and receipt setup
             Console.WriteLine("You will need to use a recipe to make lemonade.");
             Console.WriteLine();
+            Console.WriteLine("You will need ingredient(s) to prepare that recipe.");
+            Console.WriteLine("You can go to the store to buy supplies.  You will go to the store now.");
+            Console.WriteLine("You will prepare your recipe upon your return.");
+            Console.ReadLine();
+
+            //set up the store
+            ClassFiles.Game.Store.Store store = new Store.Store(player);
+            player = store.GoToTheStore();
+            Console.ReadLine();
+
+            //set the player's recipe
             Console.WriteLine("Please create a recipe now!");
-            Console.WriteLine();
-            Console.WriteLine();
             player.SetRecipe();
+
+            Console.WriteLine("*RECIPE REPORT*");
+            Console.WriteLine(player.RecipeReport());
+
+
+
+
+
 
             //set up days
             //create a Day list with 7 Day items having a temperature
@@ -66,17 +85,18 @@ namespace LemonadeStand.ClassFiles.Game
                 days.Add(new Day.Day());
             }
 
+            currentDay = 0;
+
             //give the player the predicted forecast for the first day
-            Console.WriteLine("Today's weather was predicted to be " + (days[0].weather.predictedForecast) + ".");
+            //Console.WriteLine("Today's weather: " + (days[currentDay].weather.predictedForecast) + ".");
+            
+            Console.WriteLine(days[currentDay].weather.WeatherReport());
+
+            Console.WriteLine("Tomorrow's weather is predicted to be: " + (days[currentDay].weather.predictedForecast) + ".");
             Console.ReadKey();
 
 
-            //set up the store
-            Console.WriteLine("You can go to the store to buy supplies.  You will go to the store now.");
-            Console.ReadKey();
 
-            ClassFiles.Game.Store.Store store = new Store.Store(player);
-            player = store.GoToTheStore();
 
             gameIsSetUp = true;
         }
@@ -89,20 +109,6 @@ namespace LemonadeStand.ClassFiles.Game
             {
                 currentDay = (i+1);
                 Console.WriteLine("Day #" + currentDay);
-
-
-                //sunny day: at least 60~100 customer encounters
-                //cloudy day: at least 40~80 custy enc, even nums only (counterSeconds%2==0)
-                //rainy: at least 20~70, odd nums only (counterSeconds%3==0)
-                //use random to get the daily number of custy enc
-                //assign it to the day locally?
-                //divide countdown timer by custy enc
-                    //there needs to be that many custy enc events
-                //start the day countdown timer
-                    //when it is time for the encounter event
-                        //the custy will buy if they 'roll a d6 3 times' and beat the 'magic score'
-                        //'magic score index' to be set according to weather?
-                            //lowerd one point for each sugar cube in the recipe
             }
         }
     }

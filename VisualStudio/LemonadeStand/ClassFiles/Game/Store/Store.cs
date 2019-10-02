@@ -9,7 +9,6 @@ using LemonadeStand.ClassFiles.Items;
 
 namespace LemonadeStand.ClassFiles.Game.Store
 {
-    //public static class Store
     public class Store
     {
         //memb vars
@@ -34,7 +33,8 @@ namespace LemonadeStand.ClassFiles.Game.Store
             {
                 double tempMoney = player.wallet.CountMoney();
                 //do Store things
-                Console.WriteLine("Please buy something.");
+                Console.WriteLine("You appear at the store.");
+                Console.WriteLine("What would you like to purchase from the store?");
                 Console.WriteLine("");
                 Console.WriteLine("You have $" + tempMoney.ToString() + " money.");
                 Console.WriteLine("");
@@ -44,6 +44,8 @@ namespace LemonadeStand.ClassFiles.Game.Store
                 Console.WriteLine("3 - Buy cups.");
                 Console.WriteLine();
                 Console.WriteLine("9 - Leave the store.");
+                Console.WriteLine("");
+                Console.WriteLine("");
 
                 //recipe report
                 Console.WriteLine(player.RecipeReport());
@@ -87,6 +89,11 @@ namespace LemonadeStand.ClassFiles.Game.Store
                         break;
                     default:
                         break;
+                }
+
+                if (!leaveStore)
+                {
+                    GoToTheStore();
                 }
 
             } while (!leaveStore);
