@@ -24,6 +24,6 @@ namespace LemonadeStand.ClassFiles.PlayerItems
         cup = new List<Cup>();
     }
         //memb meths
-        //Report() to give the name of the item and the quantity of the item
+        //public string InventoryReport() to give the name of the item and the quantity of the item
     }
 }

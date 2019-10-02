@@ -18,10 +18,7 @@ namespace LemonadeStand.ClassFiles.Game.Store
 
         //}
 
-        //memb meths
-        //BuyStuff()
-        //increase inventory
-        //decrease money with 
+        //memb meths       
         public static void OpenStore()
         {
             bool leaveStore = false;
@@ -47,6 +44,11 @@ namespace LemonadeStand.ClassFiles.Game.Store
                 {
                     tempInput = "9";
                 }
+
+                //find the item the player wants to buy in the list
+                //check money situation
+                //if money is less than item, cant buy stuff
+                //else (money situation = good) so buy more stuff
 
                 switch (tempInput)
                 {

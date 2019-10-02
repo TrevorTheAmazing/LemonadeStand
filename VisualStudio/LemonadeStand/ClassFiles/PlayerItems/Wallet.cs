@@ -21,7 +21,7 @@ namespace LemonadeStand.ClassFiles.PlayerItems
         //constructor
         public Wallet()
         {
-            this.money = 0.0;
+            this.money = 25.00;
         }
 
         //memb meths

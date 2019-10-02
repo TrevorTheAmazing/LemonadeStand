@@ -116,10 +116,20 @@ namespace LemonadeStand.ClassFiles.Game
                 currentDay = (i+1);
                 Console.WriteLine("Day #" + currentDay);
 
+
+                //sunny day: at least 60~100 customer encounters
+                //cloudy day: at least 40~80 custy enc, even nums only (counterSeconds%2==0)
+                //rainy: at least 20~70, odd nums only (counterSeconds%3==0)
+                //use random to get the daily number of custy enc
+                //assign it to the day locally?
+                //divide countdown timer by custy enc
+                    //there needs to be that many custy enc events
                 //start the day countdown timer
+                    //when it is time for the encounter event
+                        //the custy will buy if they 'roll a d6 3 times' and beat the 'magic score'
+                        //'magic score index' to be set according to weather?
+                            //lowerd one point for each sugar cube in the recipe
             }
         }
-
-
     }
 }
