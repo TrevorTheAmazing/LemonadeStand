@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using LemonadeStand.ClassFiles.PlayerItems;
+using LemonadeStand.ClassFiles.Game.Store;
 
 namespace LemonadeStand.ClassFiles.Game
 {
-    class Player
+    //class Player
+    public class Player
     {
         //memb vars
         public string name;
@@ -74,27 +76,21 @@ namespace LemonadeStand.ClassFiles.Game
             recipe.amountOfSugarCubes = Int32.Parse(Console.ReadLine());
             Console.WriteLine("enter the number of ice cubes in your recipe:");
             recipe.amountOfIceCubes = Int32.Parse(Console.ReadLine());
+
+
+            //double tempRecipeCost = 0.0;
+            //for 
+
+
             Console.WriteLine("enter the price per cup of your recipe:");
             recipe.pricePerCup = Double.Parse(Console.ReadLine());
-        }
 
-        public void GoToTheStore()
-        {
-            Console.WriteLine("You are now at the store.");
-            //store.OpenStore();
-            isAtStore = true;
-//            Store.Store.OpenStore();
-        }
-        public void LeaveStore()
-        {
-            Console.WriteLine("You leave the store.");
-            isAtStore = false;
         }
 
         public void SetPricePerCup()
         {
             double tempPrice = 0.0;
-            Console.WriteLine("Enter the new price per cup:");
+            Console.WriteLine("Please set the price per cup:");
 
             try
             {

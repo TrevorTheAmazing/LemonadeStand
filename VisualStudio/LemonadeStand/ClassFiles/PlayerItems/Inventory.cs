@@ -12,16 +12,16 @@ namespace LemonadeStand.ClassFiles.PlayerItems
         //memb vars
         public List<Lemon> lemons;
         public List<SugarCube> sugarCubes;
-        public List<IceCube> iceCube;
-        public List<Cup> cup;
+        public List<IceCube> iceCubes;
+        public List<Cup> cups;
 
         //constructor
         public Inventory()
         {
         lemons = new List<Lemon>();
         sugarCubes = new List<SugarCube>();
-        iceCube = new List<IceCube>();
-        cup = new List<Cup>();
+        iceCubes = new List<IceCube>();
+        cups = new List<Cup>();
     }
         //memb meths
         //public string InventoryReport() to give the name of the item and the quantity of the item

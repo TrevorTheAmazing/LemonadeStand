@@ -4,22 +4,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using LemonadeStand.ClassFiles.Game;
+using LemonadeStand.ClassFiles.PlayerItems;
+using LemonadeStand.ClassFiles.Items;
 
 namespace LemonadeStand.ClassFiles.Game.Store
 {
-    public static class Store
+    //public static class Store
+    public class Store
     {
         //memb vars
-        //public static Player player;
+        Player player;
+        public Inventory inventory;
 
         //constructor
-        //public Store()
-        //{
-
-        //}
+        public Store(Player player)
+        {
+            this.player = player;
+        }
 
         //memb meths       
-        public static void OpenStore()
+        //public store 'interface', private store methods
+        public Player GoToTheStore()
         {
             bool leaveStore = false;
 
@@ -27,20 +32,20 @@ namespace LemonadeStand.ClassFiles.Game.Store
             {
                 //do Store things
                 Console.WriteLine("Please buy something.");
-                Console.ReadLine();
+                Console.WriteLine("");
                 Console.WriteLine("0 - Buy lemons.");
                 Console.WriteLine("1 - Buy sugar cubes.");
                 Console.WriteLine("2 - Buy ice cubes.");
+                Console.WriteLine("3 - Buy cups.");
                 Console.WriteLine();
                 Console.WriteLine("9 - Leave the store.");
 
                 string tempInput = "";
-
                 try
                 {
                     tempInput = Console.ReadLine();
                 }
-                catch(Exception)
+                catch (Exception)
                 {
                     tempInput = "9";
                 }
@@ -54,13 +59,16 @@ namespace LemonadeStand.ClassFiles.Game.Store
                 {
 
                     case ("0"):
-                        BuyStuff("lemon");
+                        SellStuff("lemon");
                         break;
                     case ("1"):
-                        BuyStuff("sugarCube");
+                        SellStuff("sugarCube");
                         break;
                     case ("2"):
-                        BuyStuff("iceCube");
+                        SellStuff("iceCube");
+                        break;
+                    case ("3"):
+                        SellStuff("cup");
                         break;
                     case ("9"):
                         leaveStore = true;
@@ -70,30 +78,53 @@ namespace LemonadeStand.ClassFiles.Game.Store
                 }
 
             } while (!leaveStore);
+            return player;
+        }
 
-        }     
-        
-        private static void BuyStuff(string itemToBuy)
+        private void SellStuff(string itemToBuy)
         {
             switch (itemToBuy)
             {
-                case "lemons":
-                    Console.WriteLine("You bought then lemon.");
+                case "lemon":
+                    Lemon tempLemon = new Lemon();
+                    if (player.wallet.Money >= tempLemon.itemPrice)
+                    {
+                        player.wallet.Money -= tempLemon.itemPrice;
+                        player.inventory.lemons.Add(tempLemon);
+                        Console.WriteLine("You bought 'lemon.'");
+                    }                    
                     break;
                 case "sugarCube":
-                    Console.WriteLine("You bought the sugar cube.");
+                    SugarCube tempSugarCube = new SugarCube();
+                    if (player.wallet.Money >= tempSugarCube.itemPrice)
+                    {
+                        player.wallet.Money -= tempSugarCube.itemPrice;
+                        player.inventory.sugarCubes.Add(tempSugarCube);
+                        Console.WriteLine("You bought 'sugar cube.'");
+                    }                    
                     break;
                 case "iceCube":
-                    Console.WriteLine("You bought the ice cube.");
+                    IceCube tempIceCube = new IceCube();
+                    if (player.wallet.Money >= tempIceCube.itemPrice)
+                    {
+                        player.wallet.Money -= tempIceCube.itemPrice;
+                        player.inventory.iceCubes.Add(tempIceCube);
+                        Console.WriteLine("You bought 'ice cube.'");
+                    }                        
+                    break;
+                case "cup":
+                    Cup tempCup = new Cup();
+                    if (player.wallet.Money >= tempCup.itemPrice)
+                    {
+                        player.wallet.Money -= tempCup.itemPrice;
+                        player.inventory.cups.Add(tempCup);
+                        Console.WriteLine("You bought 'cup.'");
+                    }
                     break;
                 default:
                     break;
             }
         }
-    
-        public static void CloseStore()
-        {
 
-        }
     }
 }

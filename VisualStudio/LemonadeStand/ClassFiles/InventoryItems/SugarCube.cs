@@ -10,19 +10,15 @@ namespace LemonadeStand.ClassFiles.Items
     public class SugarCube : Item
     {
         //memb vars FOR SugarCube    
-        //public int Quantity;
         public double itemPrice;
 
         //constructor FOR SugarCube
-        //public SugarCube(string Name, double Price)
         public SugarCube()
         {
             this.name = "SugarCube";
             this.quantity = 0;
-            this.itemPrice = 1.00;
 
-            //defaults
-            //color = "white"
+            this.itemPrice = 1.00;
         }
 
         //memb meth FOR SugarCube

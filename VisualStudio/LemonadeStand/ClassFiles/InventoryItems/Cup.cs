@@ -10,17 +10,14 @@ namespace LemonadeStand.ClassFiles.Items
     public class Cup : Item
     {
         //memb vars FOR Cup
-        //public int Quantity;
+        public double itemPrice;
 
-        //constructor FOR CUP
-        
         public Cup()
         {
             this.name = "Cup";
             this.quantity = 0;
-
-            //defaults
-            //color = "blue"
+            
+            this.itemPrice = 1.00;
         }
 
         //memb meth FOR CUP

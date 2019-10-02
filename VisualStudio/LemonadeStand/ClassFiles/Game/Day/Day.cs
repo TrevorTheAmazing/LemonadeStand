@@ -44,6 +44,7 @@ namespace LemonadeStand.ClassFiles.Game.Day
                 //does this work for string concat?
                 tempCustomer.name += i;
                 customersIn.Add(tempCustomer);
+                //use random to make a range for 'will buy'
             }
             return customersIn;
         }

@@ -16,6 +16,8 @@ namespace LemonadeStand.ClassFiles.Game.Day
         public Customer()
         {
             this.name = "Customer";
+            //create a boolean membvar "willPurchase", init to false
+            
         }
 
         //memb meths

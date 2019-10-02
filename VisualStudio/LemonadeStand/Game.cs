@@ -71,39 +71,12 @@ namespace LemonadeStand.ClassFiles.Game
             Console.WriteLine("You can go to the store to buy supplies.  You will go to the store now.");
             Console.ReadKey();
 
-            Store.Store.OpenStore();
+            ClassFiles.Game.Store.Store store = new Store.Store(player);
+            player = store.GoToTheStore();
 
-            do
-            {
-                player.GoToTheStore();
-            } while (!player.IsAtStore);
+            Console.WriteLine("Now set the price per cup!");
+            player.SetPricePerCup();
 
-            //option to set price per cup
-            Console.WriteLine("Would you like to set the price per cup?");
-
-            string tempStr = "";
-            try
-            {                
-                tempStr = (Console.ReadLine()).ToLower();
-            }
-            catch(Exception)
-            {
-                tempStr = "n";
-            }
-            finally
-            {
-                if (tempStr == "y")
-                {
-                    player.SetPricePerCup();
-                }
-
-                player.LeaveStore();
-                if (!player.IsAtStore)
-                {
-                    Store.Store.CloseStore();
-                }
-                
-            }
             gameIsSetUp = true;
         }
 
