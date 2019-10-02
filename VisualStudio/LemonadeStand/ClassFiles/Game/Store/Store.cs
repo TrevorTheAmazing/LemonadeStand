@@ -40,7 +40,7 @@ namespace LemonadeStand.ClassFiles.Game.Store
                 Console.WriteLine("");
                 //INVENTORY REPORT HERE
                 Console.WriteLine(player.InventoryReport());
-                Console.WriteLine("You have _INVENTORYREPORT.");
+                Console.WriteLine("");
                 Console.WriteLine("0 - Buy lemons.");
                 Console.WriteLine("1 - Buy sugar cubes.");
                 Console.WriteLine("2 - Buy ice cubes.");
@@ -53,10 +53,7 @@ namespace LemonadeStand.ClassFiles.Game.Store
                 //recipe report
                 Console.WriteLine(player.RecipeReport());
 
-                ////report recipe cost
-                //double tempRecipeCost = player.GetRecipeCost();
-                //Console.WriteLine("the cost of your recipe is $" + tempRecipeCost);
-
+                //get user's selection
                 string tempInput = "";
                 try
                 {
