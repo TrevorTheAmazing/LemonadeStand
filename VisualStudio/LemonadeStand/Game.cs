@@ -15,6 +15,7 @@ namespace LemonadeStand.ClassFiles.Game
         public int currentDay;
         private bool gameIsSetUp = false;
         private bool playerIsSetUp = false;
+        Player player = new Player();
 
         public Game()
         {
@@ -38,7 +39,7 @@ namespace LemonadeStand.ClassFiles.Game
         {
             //set up player
             playerIsSetUp = false;
-            Player player = new Player();
+            //Player player = new Player();
 
             //set the player's name
             Console.WriteLine("Hello, Player.  Welcome to 'Lemonade Stand' game!");
@@ -78,13 +79,19 @@ namespace LemonadeStand.ClassFiles.Game
             Console.WriteLine("");
             Console.WriteLine(player.RecipeReport());
 
+            Console.WriteLine("");
+            Console.WriteLine("You attempt to make lemonade.");
+
              if (player.MakeLemonade())
                 {
                     playerIsSetUp = true;
-                }
+                Console.WriteLine("");
+                Console.WriteLine("You successfully made the L E M O N A D E.");
+                Console.WriteLine("");
+            }
             else
                 {
-                    Console.WriteLine("You have insufficient lemonade.  You will need lemonade to sell.");
+                    Console.WriteLine("You have insufficient L E M O N A D E.  You will need lemonade to sell.");
                 }
 
             //set up days
@@ -116,38 +123,38 @@ namespace LemonadeStand.ClassFiles.Game
                 Console.WriteLine("Day #" + currentDay);
 
                 //begin the day's countdown timer
-                //fire off a number of 'interaction' events based on the day.weather.happinessIndex
+                //fire off a number of 'interaction' events based on the day.weather.happinessIndex?
+                //step through the current day's customers
                 for (int j = 0; i < days[currentDay].customers.Count; i++)
                 {
-                    //custy will buy if (.willPurchase && (.purchasePower>=.hapIDX))
+                    //if custy will buy and has an .internalResistance <=the day.weather's .hapIDX))
                     if ((days[currentDay].customers[i].willPurchase) && 
-                        (days[currentDay].customers[i].purchasePower >= days[currentDay].weather.happinessIndex))
+                        (days[currentDay].customers[i].internalResistance <= days[currentDay].weather.happinessIndex))
                     {
                         //verify that recipe meets or exceeds customer preference
-                        ////////////////////////////////
-                        SellLemonade();////////////////
-                    }/////////////////////////////////
-                    
+                        if ((player.recipe.amountOfLemons >= days[currentDay].customers[i].customerPreferences.amountOfLemons) &&
+                            (player.recipe.amountOfSugarCubes >= days[currentDay].customers[i].customerPreferences.amountOfSugarCubes) &&
+                            (player.recipe.amountOfIceCubes >= days[currentDay].customers[i].customerPreferences.amountOfIceCubes))
+                        {
+                            SellLemonade();
+                        } 
+                        else
+                        {
+                            Console.WriteLine("no lemonade.");
+                        }
+                    }
                 }
-
-
-                              //CHANGE custy.purchPOW TO internalResistance, 
-                              //if custy.intRES <= hapIDX
-
-
-
-
-
-                //day coundown timer ends
+                //day coundown timer ends?
                 //generate daily p&L report (revenue, profit, gross sales, num of cst int, num of successful interactions)
                 //add daily p&L to grand total
-
+                Console.WriteLine("end of day" + currentDay);
+                Console.ReadLine();
             }
         }
 
         public void SellLemonade(/*Player playerIn*/)
         {
-            Console.WriteLine("now in SellLemonade");
+            Console.WriteLine("L E M O N A D E  y'all");
 //            Player = playerIn;
             //PURCHASE aka SALE
             //inc player.wallet.money

@@ -13,7 +13,7 @@ namespace LemonadeStand.ClassFiles.Game.Day
         //private List<string> names = new List<string>();
         public string name;
         public bool willPurchase;
-        public int purchasePower;
+        public int internalResistance;
         public double maxPurchasePrice;
         public Recipe customerPreferences;
 
@@ -23,12 +23,14 @@ namespace LemonadeStand.ClassFiles.Game.Day
             this.name = "Customer";
             this.willPurchase = false;
             this.maxPurchasePrice = 0.0;
-            this.purchasePower = 0;
+            this.internalResistance = 0;
             
-            customerPreferences = new Recipe();
-            customerPreferences.amountOfLemons = 1;
-            customerPreferences.amountOfSugarCubes = 1;
-            customerPreferences.amountOfIceCubes = 1;       
+            this.customerPreferences = new Recipe();
+            Random random = new Random();
+            customerPreferences.amountOfLemons = random.Next(0, 3);
+            customerPreferences.amountOfSugarCubes = random.Next(0, 3);
+            customerPreferences.amountOfIceCubes = random.Next(0, 3);
+            customerPreferences.pricePerCup = 0.0;
         }
 
         //memb meths
