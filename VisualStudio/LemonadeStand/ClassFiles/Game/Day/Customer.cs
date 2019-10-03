@@ -28,7 +28,9 @@ namespace LemonadeStand.ClassFiles.Game.Day
             this.customerPreferences = new Recipe();
             Random random = new Random();
             customerPreferences.amountOfLemons = random.Next(0, 3);
+            random = new Random();
             customerPreferences.amountOfSugarCubes = random.Next(0, 3);
+            random = new Random();
             customerPreferences.amountOfIceCubes = random.Next(0, 3);
             customerPreferences.pricePerCup = 0.0;
         }

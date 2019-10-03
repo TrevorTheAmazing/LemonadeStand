@@ -14,7 +14,7 @@ namespace LemonadeStand
             //Console.WriteLine("test");
             //Console.ReadLine();
             Game game = new Game();
-            game.PlayGame();
+            //game.PlayGame();
         }
     }
 }

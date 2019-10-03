@@ -119,22 +119,22 @@ namespace LemonadeStand.ClassFiles.Game
             for (int i = 0; i<days.Count; i++)
             {
                 //display the current day
-                currentDay = (i+1);
-                Console.WriteLine("Day #" + currentDay);
+                currentDay = i;
+                Console.WriteLine("Day #" + (currentDay + 1));
 
                 //begin the day's countdown timer
                 //fire off a number of 'interaction' events based on the day.weather.happinessIndex?
                 //step through the current day's customers
-                for (int j = 0; i < days[currentDay].customers.Count; i++)
+                for (int j = 0; j < days[currentDay].customers.Count; j++)
                 {
                     //if custy will buy and has an .internalResistance <=the day.weather's .hapIDX))
-                    if ((days[currentDay].customers[i].willPurchase) && 
-                        (days[currentDay].customers[i].internalResistance <= days[currentDay].weather.happinessIndex))
+                    if ((days[currentDay].customers[j].willPurchase) && 
+                        (days[currentDay].customers[j].internalResistance <= days[currentDay].weather.happinessIndex))
                     {
                         //verify that recipe meets or exceeds customer preference
-                        if ((player.recipe.amountOfLemons >= days[currentDay].customers[i].customerPreferences.amountOfLemons) &&
-                            (player.recipe.amountOfSugarCubes >= days[currentDay].customers[i].customerPreferences.amountOfSugarCubes) &&
-                            (player.recipe.amountOfIceCubes >= days[currentDay].customers[i].customerPreferences.amountOfIceCubes))
+                        if ((player.recipe.amountOfLemons >= days[currentDay].customers[j].customerPreferences.amountOfLemons) &&
+                            (player.recipe.amountOfSugarCubes >= days[currentDay].customers[j].customerPreferences.amountOfSugarCubes) &&
+                            (player.recipe.amountOfIceCubes >= days[currentDay].customers[j].customerPreferences.amountOfIceCubes))
                         {
                             SellLemonade();
                         } 
@@ -147,7 +147,7 @@ namespace LemonadeStand.ClassFiles.Game
                 //day coundown timer ends?
                 //generate daily p&L report (revenue, profit, gross sales, num of cst int, num of successful interactions)
                 //add daily p&L to grand total
-                Console.WriteLine("end of day" + currentDay);
+                Console.WriteLine("end of day" + (currentDay+1));
                 Console.ReadLine();
             }
         }
