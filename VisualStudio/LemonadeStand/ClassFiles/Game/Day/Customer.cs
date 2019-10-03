@@ -20,20 +20,20 @@ namespace LemonadeStand.ClassFiles.Game.Day
         //constructor
         public Customer()
         {
-            this.name = "Customer";
-            this.willPurchase = false;
-            this.maxPurchasePrice = 0.0;
-            this.internalResistance = 0;
-            
-            this.customerPreferences = new Recipe();
             Random random = new Random();
-            customerPreferences.amountOfLemons = random.Next(0, 3);
-            random = new Random();
-            customerPreferences.amountOfSugarCubes = random.Next(0, 3);
-            random = new Random();
-            customerPreferences.amountOfIceCubes = random.Next(0, 3);
+            this.name = "Customer";
+            this.willPurchase = ((random.Next(0, 101)) >= 50);
+            this.maxPurchasePrice = ((random.NextDouble() * (6.0 - 1.0)) + 1.0);
+            this.internalResistance = random.Next(0, 101);
+
+            this.customerPreferences = new Recipe();
+            customerPreferences.amountOfLemons = random.Next(0, 2);
+            customerPreferences.amountOfSugarCubes = random.Next(0, 2);
+            customerPreferences.amountOfIceCubes = random.Next(0, 2);
             customerPreferences.pricePerCup = 0.0;
         }
+
+        
 
         //memb meths
         //private List<string> BuildNewCustomerNamesList(List<string> CustomerNamesListIn)

@@ -11,9 +11,10 @@ namespace LemonadeStand.ClassFiles.Game.Day
     {
         //memb vars
         public Weather weather;
-        public List<Customer> customers = new List<Customer>();
+        public List<Customer> customers = new List<Customer>();        
         public double timeRemaining;
         private int customerCount = 100;
+        Random random = new Random();
 
         //constructor
         public Day()
@@ -22,8 +23,8 @@ namespace LemonadeStand.ClassFiles.Game.Day
             weather = new Weather();
 
             //set play time remaining for the day
-            timeRemaining = 100.0;
-            
+            //timeRemaining = 100.0;
+
             //add 100 customers to the list each day
             customers = BuildDailyCustomerList( customers, customerCount);
             
@@ -33,14 +34,13 @@ namespace LemonadeStand.ClassFiles.Game.Day
 
         //memb meths
         public List<Customer> BuildDailyCustomerList( List<Customer> customersIn, int customerCountIn)
-        //public List<Customer> BuildDailyCustomerList()
         {
             //create a new customer and name it            
             //for (int i = 0; i < CustomerListIn.Count; i++)
             for (int i = 0; i < customerCountIn; i++)
             {
                 Customer tempCustomer = new Customer();
-                Random random = new Random();
+                //Random random = new Random();
 
                 tempCustomer.name += i;
                 tempCustomer.willPurchase = ((random.Next(0, 101)) >= 50);
@@ -48,6 +48,7 @@ namespace LemonadeStand.ClassFiles.Game.Day
                 tempCustomer.internalResistance = random.Next(0, 101);
                 customersIn.Add(tempCustomer);                
             }
+            
             return customersIn;
         }
     }

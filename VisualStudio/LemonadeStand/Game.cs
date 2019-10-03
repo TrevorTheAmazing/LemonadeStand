@@ -128,13 +128,14 @@ namespace LemonadeStand.ClassFiles.Game
                 for (int j = 0; j < days[currentDay].customers.Count; j++)
                 {
                     //if custy will buy and has an .internalResistance <=the day.weather's .hapIDX))
-                    if ((days[currentDay].customers[j].willPurchase) && 
-                        (days[currentDay].customers[j].internalResistance <= days[currentDay].weather.happinessIndex))
+                    //if ((days[currentDay].customers[j].willPurchase) && 
+                    //    (days[currentDay].customers[j].internalResistance <= days[currentDay].weather.happinessIndex))
+                    if (days[currentDay].customers[j].willPurchase)
                     {
                         //verify that recipe meets or exceeds customer preference
-                        if ((player.recipe.amountOfLemons >= days[currentDay].customers[j].customerPreferences.amountOfLemons) &&
-                            (player.recipe.amountOfSugarCubes >= days[currentDay].customers[j].customerPreferences.amountOfSugarCubes) &&
-                            (player.recipe.amountOfIceCubes >= days[currentDay].customers[j].customerPreferences.amountOfIceCubes))
+                        if (player.recipe.amountOfLemons >= days[currentDay].customers[j].customerPreferences.amountOfLemons ||
+                            player.recipe.amountOfSugarCubes >= days[currentDay].customers[j].customerPreferences.amountOfSugarCubes ||
+                            player.recipe.amountOfIceCubes >= days[currentDay].customers[j].customerPreferences.amountOfIceCubes)
                         {
                             SellLemonade();
                         } 
