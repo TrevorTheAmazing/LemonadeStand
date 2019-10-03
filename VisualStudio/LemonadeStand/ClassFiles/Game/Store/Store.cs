@@ -34,24 +34,39 @@ namespace LemonadeStand.ClassFiles.Game.Store
                 double tempMoney = player.wallet.CountMoney();
                 //do Store things
                 Console.WriteLine("You appear at the store.");
-                Console.WriteLine("What would you like to purchase from the store?");
                 Console.WriteLine("");
                 Console.WriteLine("You have $" + tempMoney.ToString() + " money.");
                 Console.WriteLine("");
+
                 //INVENTORY REPORT HERE
                 Console.WriteLine(player.InventoryReport());
                 Console.WriteLine("");
-                Console.WriteLine("0 - Buy lemons.");
-                Console.WriteLine("1 - Buy sugar cubes.");
-                Console.WriteLine("2 - Buy ice cubes.");
-                Console.WriteLine("3 - Buy cups.");
+
+                Lemon tempLemon = new Lemon();
+                double lemonPurchQty = 10;
+                Console.WriteLine("0 - Buy lemons.  " + lemonPurchQty + " for " + (tempLemon.itemPrice * lemonPurchQty).ToString());
+
+                SugarCube tempSugarCube = new SugarCube();
+                double sugarCubePurchQty = 144;
+                Console.WriteLine("1 - Buy sugar cubes.  " + sugarCubePurchQty.ToString() + " for " + (tempSugarCube.itemPrice * sugarCubePurchQty).ToString());
+
+                IceCube tempIceCube = new IceCube();
+                double iceCubePurchQty = 120;
+                Console.WriteLine("2 - Buy ice cubes.  " + iceCubePurchQty.ToString() + " for " + (tempIceCube.itemPrice * iceCubePurchQty).ToString());
+
+                Cup tempCup = new Cup();
+                double cupPurchQty = 50;
+                Console.WriteLine("3 - Buy cups.  " + cupPurchQty.ToString() + " for " + (tempCup.itemPrice * cupPurchQty).ToString());
+
                 Console.WriteLine("");
-                Console.WriteLine("9 - Leave the store.");
+                Console.WriteLine("9 - Purchase nothing more.  Leave the store.");
                 Console.WriteLine("");
                 Console.WriteLine("");
 
                 //recipe report
                 Console.WriteLine(player.RecipeReport());
+                Console.WriteLine("");
+                Console.WriteLine("What would you like to purchase from the store?");
 
                 //get user's selection
                 string tempInput = "";
@@ -65,10 +80,6 @@ namespace LemonadeStand.ClassFiles.Game.Store
                 }
 
                 //find the item the player wants to buy in the list
-                //check money situation
-                //if money is less than item, cant buy stuff
-                //else (money situation = good) so buy more stuff
-
                 switch (tempInput)
                 {
 
@@ -91,18 +102,18 @@ namespace LemonadeStand.ClassFiles.Game.Store
                         break;
                 }
 
-                if (!leaveStore)
+                if (leaveStore)
+                {
+                    break; 
+                }
+                else
                 {
                     GoToTheStore();
                 }
 
             } while (!leaveStore);
 
-            if (leaveStore)
-            {
-                LeaveTheStore();
-            }
-
+            LeaveTheStore();
             return player;
         }
 

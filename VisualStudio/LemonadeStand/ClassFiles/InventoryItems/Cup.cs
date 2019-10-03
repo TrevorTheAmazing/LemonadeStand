@@ -17,7 +17,7 @@ namespace LemonadeStand.ClassFiles.Items
             this.name = "Cup";
             this.quantity = 0;
             
-            this.itemPrice = 1.00;
+            this.itemPrice = 0.04;
         }
 
         //memb meth FOR CUP

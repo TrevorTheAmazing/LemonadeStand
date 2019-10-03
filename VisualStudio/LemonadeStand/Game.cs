@@ -72,7 +72,9 @@ namespace LemonadeStand.ClassFiles.Game
             Console.ReadLine();
 
             Console.Clear();
-            Console.WriteLine("You return from the store.  Now you must prepare your recipe!  Only then will you have lemonade to sell.");
+            Console.WriteLine("You return from the store." + Environment.NewLine + Environment.NewLine + 
+                "Now you must prepare your recipe!" + Environment.NewLine +  "Only then will you have lemonade to sell.");
+            Console.WriteLine("");
             Console.WriteLine(player.RecipeReport());
 
             //
@@ -88,9 +90,6 @@ namespace LemonadeStand.ClassFiles.Game
             }
 
             currentDay = 0;
-
-            //give the player the predicted forecast for the first day
-            //Console.WriteLine("Today's weather: " + (days[currentDay].weather.predictedForecast) + ".");
             
             Console.WriteLine(days[currentDay].weather.WeatherReport());
 
