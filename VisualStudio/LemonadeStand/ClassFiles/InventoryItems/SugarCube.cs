@@ -16,9 +16,9 @@ namespace LemonadeStand.ClassFiles.Items
         public SugarCube()
         {
             this.name = "SugarCube";
-            this.quantity = 0;
+            this.quantity = 1;
 
-            this.itemPrice = 0.40;
+            this.itemPrice = 1.50;
         }
 
         //memb meth FOR SugarCube

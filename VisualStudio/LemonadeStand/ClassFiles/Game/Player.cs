@@ -109,7 +109,7 @@ namespace LemonadeStand.ClassFiles.Game
         public string RecipeReport()
         {
             return (GetRecipe() + "." + Environment.NewLine +
-                "The cost of your recipe is $" + GetRecipeCost() + "." + Environment.NewLine +
+               // "The cost of your recipe is $" + GetRecipeCost() + "." + Environment.NewLine +
                 "You will charge $" + recipe.pricePerCup + " per cup.");
 
         }

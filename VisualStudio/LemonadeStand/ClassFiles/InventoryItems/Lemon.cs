@@ -16,9 +16,9 @@ namespace LemonadeStand.ClassFiles.Items
         public Lemon()
         {
             this.name = "Lemon";
-            this.quantity = 0;
+            this.quantity = 1;
 
-            this.itemPrice = 0.38;
+            this.itemPrice = 1.00;
         }
 
         //memb meth FOR LEMONS
