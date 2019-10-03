@@ -145,5 +145,39 @@ namespace LemonadeStand.ClassFiles.Game
 
             return tempInventory;
         }
+
+        public bool MakeLemonade()
+        {
+            //check quantities on hand prior to reducing inventory
+            if ((inventory.lemons.Count >= recipe.amountOfLemons) &&
+                (inventory.sugarCubes.Count >= recipe.amountOfSugarCubes) &&
+                (inventory.iceCubes.Count >= recipe.amountOfIceCubes))
+            {
+                //subtract recipe qty from inventory
+                for (int i = 0; i < recipe.amountOfLemons; i++)
+                {
+                    inventory.lemons.RemoveAt(0);
+                }
+
+                for (int i = 0; i < recipe.amountOfSugarCubes; i++)
+                {
+                    inventory.sugarCubes.RemoveAt(0);
+                }
+                for (int i = 0; i < recipe.amountOfIceCubes; i++)
+                {
+                    inventory.iceCubes.RemoveAt(0);
+                }
+
+                //set pitcher.cupsLeft to 100
+                pitcher.cupsLeftInPitcher = 100;
+                return true;
+            }
+            else
+            {
+                return false;
+            }                
+        }
+        
+
     }
 }

@@ -116,7 +116,7 @@ namespace LemonadeStand.ClassFiles.Game.Store
                     default:
                         break;
                 }
-
+                
                 if (leaveStore)
                 {
                     LeaveTheStore();

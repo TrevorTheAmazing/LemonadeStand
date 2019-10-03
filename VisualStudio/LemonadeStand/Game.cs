@@ -14,6 +14,7 @@ namespace LemonadeStand.ClassFiles.Game
         List<LemonadeStand.ClassFiles.Game.Day.Day> days = new List<LemonadeStand.ClassFiles.Game.Day.Day>();
         public int currentDay;
         private bool gameIsSetUp = false;
+        private bool playerIsSetUp = false;
 
         public Game()
         {
@@ -36,6 +37,7 @@ namespace LemonadeStand.ClassFiles.Game
         public void SetupGame()
         {
             //set up player
+            playerIsSetUp = false;
             Player player = new Player();
 
             //set the player's name
@@ -69,7 +71,6 @@ namespace LemonadeStand.ClassFiles.Game
             //set up the store
             ClassFiles.Game.Store.Store store = new Store.Store(player);
             player = store.GoToTheStore();
-            Console.ReadLine();
 
             Console.Clear();
             Console.WriteLine("You return from the store." + Environment.NewLine + Environment.NewLine + 
@@ -77,10 +78,15 @@ namespace LemonadeStand.ClassFiles.Game
             Console.WriteLine("");
             Console.WriteLine(player.RecipeReport());
 
-            //
-
-
-
+             if (player.MakeLemonade())
+                {
+                    playerIsSetUp = true;
+                }
+            else
+                {
+                    Console.WriteLine("You have insufficient lemonade.  You will need lemonade to sell.");
+                }
+            
 
             //set up days
             //create a Day list with 7 Day items having a temperature
