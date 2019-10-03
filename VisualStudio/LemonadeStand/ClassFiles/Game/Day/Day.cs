@@ -40,11 +40,13 @@ namespace LemonadeStand.ClassFiles.Game.Day
             for (int i = 0; i < customerCountIn; i++)
             {
                 Customer tempCustomer = new Customer();
+                Random random = new Random();
 
                 //does this work for string concat?
                 tempCustomer.name += i;
-                customersIn.Add(tempCustomer);
-                //use random to make a range for 'will buy'
+                tempCustomer.willPurchase = ((random.Next(0, 101)) >= 50);
+                tempCustomer.maxPurchasePrice = ((random.NextDouble() * (6.0 - 1.0)) + 1.0);
+                customersIn.Add(tempCustomer);                
             }
             return customersIn;
         }

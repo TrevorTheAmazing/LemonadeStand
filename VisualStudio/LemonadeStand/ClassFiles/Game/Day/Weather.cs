@@ -11,6 +11,7 @@ namespace LemonadeStand.ClassFiles.Game.Day
         //memb vars
         public string condition;
         public int temperature;
+        public int happinessIndex;
         public string predictedForecast;
         private List<string> weatherConditions = new List<string>() { "It's a scorcher wow such heat", "Sunny and hot", "Exceptionally nice and borderline perfect", "Cloudy but warm", "No rain but pretty chill", "Cold and rainy" };
 
@@ -27,24 +28,31 @@ namespace LemonadeStand.ClassFiles.Game.Day
             {
                 case (0):
                     this.temperature = random.Next(98, 106);
+                    this.happinessIndex = random.Next(10, 101);
                     break;
                 case (1):
                     this.temperature = random.Next(81, 99);
+                    this.happinessIndex = random.Next(25, 101);
                     break;
                 case (2):
                     this.temperature = random.Next(72, 82);
+                    this.happinessIndex = random.Next(30, 101);
                     break;
                 case (3):
                     this.temperature = random.Next(63, 73);
+                    this.happinessIndex = random.Next(45, 101);
                     break;
                 case (4):
                     this.temperature = random.Next(54, 65);
+                    this.happinessIndex = random.Next(55, 101);
                     break;
                 case (5):
-                    this.temperature = random.Next(48, 55);                    
+                    this.temperature = random.Next(48, 55);
+                    this.happinessIndex = random.Next(70, 101);
                     break;
                 default:
                     this.temperature = 68;
+                    this.happinessIndex = random.Next(50, 80);
                     break;
             }                       
 

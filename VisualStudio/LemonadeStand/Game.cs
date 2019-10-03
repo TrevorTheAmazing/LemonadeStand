@@ -86,7 +86,6 @@ namespace LemonadeStand.ClassFiles.Game
                 {
                     Console.WriteLine("You have insufficient lemonade.  You will need lemonade to sell.");
                 }
-            
 
             //set up days
             //create a Day list with 7 Day items having a temperature
@@ -96,27 +95,65 @@ namespace LemonadeStand.ClassFiles.Game
             }
 
             currentDay = 0;
-            
+
             Console.WriteLine(days[currentDay].weather.WeatherReport());
 
             Console.WriteLine("Tomorrow's weather is predicted to be: " + (days[currentDay].weather.predictedForecast) + ".");
             Console.ReadKey();
 
-
-
-
             gameIsSetUp = true;
         }
 
-        public void PlayGame()
+        public void PlayGame(/*Player playerIn*/)
         {
+            //player = playerIn;
             Console.WriteLine("PLAY GAME NOW!!");
             Console.ReadLine();
             for (int i = 0; i<days.Count; i++)
             {
+                //display the current day
                 currentDay = (i+1);
                 Console.WriteLine("Day #" + currentDay);
+
+                //begin the day's countdown timer
+                //fire off a number of 'interaction' events based on the day.weather.happinessIndex
+                for (int j = 0; i < days[currentDay].customers.Count; i++)
+                {
+                    //custy will buy if (.willPurchase && (.purchasePower>=.hapIDX))
+                    if ((days[currentDay].customers[i].willPurchase) && 
+                        (days[currentDay].customers[i].purchasePower >= days[currentDay].weather.happinessIndex))
+                    {
+                        //verify that recipe meets or exceeds customer preference
+                        ////////////////////////////////
+                        SellLemonade();////////////////
+                    }/////////////////////////////////
+                    
+                }
+
+
+                              //CHANGE custy.purchPOW TO internalResistance, 
+                              //if custy.intRES <= hapIDX
+
+
+
+
+
+                //day coundown timer ends
+                //generate daily p&L report (revenue, profit, gross sales, num of cst int, num of successful interactions)
+                //add daily p&L to grand total
+
             }
+        }
+
+        public void SellLemonade(/*Player playerIn*/)
+        {
+            Console.WriteLine("now in SellLemonade");
+//            Player = playerIn;
+            //PURCHASE aka SALE
+            //inc player.wallet.money
+            
+                    //burn a cup
+                    //decrement pitcher.cupsRemain
         }
     }
 }

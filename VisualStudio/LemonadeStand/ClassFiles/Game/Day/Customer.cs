@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LemonadeStand.ClassFiles.PlayerItems;
 
 namespace LemonadeStand.ClassFiles.Game.Day
 {
@@ -11,13 +12,23 @@ namespace LemonadeStand.ClassFiles.Game.Day
         //memb vars
         //private List<string> names = new List<string>();
         public string name;
+        public bool willPurchase;
+        public int purchasePower;
+        public double maxPurchasePrice;
+        public Recipe customerPreferences;
 
         //constructor
         public Customer()
         {
             this.name = "Customer";
-            //create a boolean membvar "willPurchase", init to false
+            this.willPurchase = false;
+            this.maxPurchasePrice = 0.0;
+            this.purchasePower = 0;
             
+            customerPreferences = new Recipe();
+            customerPreferences.amountOfLemons = 1;
+            customerPreferences.amountOfSugarCubes = 1;
+            customerPreferences.amountOfIceCubes = 1;       
         }
 
         //memb meths
