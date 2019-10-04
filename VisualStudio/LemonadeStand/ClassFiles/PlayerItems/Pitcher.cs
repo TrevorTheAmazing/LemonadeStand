@@ -26,5 +26,19 @@ namespace LemonadeStand.ClassFiles.PlayerItems
             cupsLeftInPitcher = maxCapacity;
         }
 
+        public bool DispenseBeverage()
+        {
+            if (cupsLeftInPitcher>0)
+            {
+                cupsLeftInPitcher--;
+                return true;
+            }
+            else
+            {
+                return false;
+                
+            }
+        }
+
     }
 }
