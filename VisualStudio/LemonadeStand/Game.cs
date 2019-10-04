@@ -18,6 +18,13 @@ namespace LemonadeStand.ClassFiles.Game
         Player player = new Player();
         Random random = new Random();
         ClassFiles.Game.Store.Store store;
+        public int cupsSold;
+        public double tempRevenue;
+        public double weeklySales;
+        public int customerInteractions;
+        public int positiveInteractions;
+        public int negativeInteractions;
+        public int pitchersToday;
 
         public Game()
         {
@@ -117,22 +124,50 @@ namespace LemonadeStand.ClassFiles.Game
 
         public void PlayGame(/*Player playerIn*/)
         {
+            weeklySales = 0;
             //player = playerIn;
-            int tempNo;
             Console.WriteLine("PLAY GAME NOW!!");
             Console.ReadLine();
             for (int i = 0; i<days.Count; i++)
             {
                 //display the current day
                 currentDay = i;
+                pitchersToday = 0;
                 Console.WriteLine("Day #" + (currentDay + 1));
-                tempNo = 0;
+                negativeInteractions = 0;
 
                 //DO WEATHER REPORT
-                //DO INV RPT
-                //DO RECIPE RPT
+                Console.WriteLine(days[currentDay].weather.WeatherReport());
+
                 //OPTION TO GO TO THE STORE
+                Console.WriteLine("Would you like to go to the store?");
+                if (Console.ReadLine()=="y")
+                {
+                    player = store.GoToTheStore();
+                }
+
                 //MAKE THE LEMONADE
+                if (player.MakeLemonade())
+                {
+                    pitchersToday = 1;
+                    Console.WriteLine("");
+                    Console.WriteLine("You successfully made the L E M O N A D E.");
+                    Console.WriteLine("");
+                }
+                else
+                {
+                    Console.WriteLine("You have insufficient L E M O N A D E.  You will need lemonade to sell.");
+                    //OPTION TO GO TO THE STORE
+                    Console.WriteLine("Would you like to go to the store?");
+                    if (Console.ReadLine() == "y")
+                    {
+                        player = store.GoToTheStore();
+                    }
+                }
+
+
+
+
                 //DO THE DAY
 
                 //begin the day's countdown timer
@@ -140,51 +175,85 @@ namespace LemonadeStand.ClassFiles.Game
                 //step through the current day's customers
                 for (int j = 0; j < days[currentDay].customers.Count; j++)
                 {
+
+                cupsSold = 0;
+                tempRevenue = 0.0;                
+                customerInteractions = 0;
+                positiveInteractions = 0;
+                negativeInteractions = 0;
+
                     //if custy will buy and has an .internalResistance <=the day.weather's .hapIDX))
-                    if ((days[currentDay].customers[j].willPurchase) && 
-                        (days[currentDay].customers[j].internalResistance <= 
-                         days[currentDay].weather.happinessIndex))
+                    if (days[currentDay].customers[j].willPurchase)
                     {
-                        //verify that recipe meets or exceeds customer preference
-                        if (player.recipe.amountOfLemons >= days[currentDay].customers[j].customerPreferences.amountOfLemons &&
-                            player.recipe.amountOfSugarCubes >= days[currentDay].customers[j].customerPreferences.amountOfSugarCubes &&
-                            player.recipe.amountOfIceCubes >= days[currentDay].customers[j].customerPreferences.amountOfIceCubes)
-                        {
-                            SellLemonade();
-                        } 
-                        else
-                        {
-                            Console.WriteLine("no lemonade.");
-                            tempNo++;
+                        customerInteractions++;
+                        
+                        if ((days[currentDay].customers[j].internalResistance <= 
+                             days[currentDay].weather.happinessIndex))
+                        { 
+                            //verify that recipe meets or exceeds customer preference
+                            if (player.recipe.amountOfLemons >= days[currentDay].customers[j].customerPreferences.amountOfLemons &&
+                                player.recipe.amountOfSugarCubes >= days[currentDay].customers[j].customerPreferences.amountOfSugarCubes &&
+                                player.recipe.amountOfIceCubes >= days[currentDay].customers[j].customerPreferences.amountOfIceCubes)
+                            {
+                                if (SellLemonade())
+                                {
+                                    positiveInteractions++;
+                                }
+                                else
+                                {
+                                    Console.WriteLine("no lemonade.");
+                                    negativeInteractions++;
+                                }
+                            }
                         }
                     }
                 }
                 //day coundown timer ends?
 
-                //generate daily p&L report (revenue, profit, gross sales, num of cst int, num of successful interactions)
-                Console.WriteLine("tempNo = " + tempNo);
-                Console.WriteLine("P&L REPORT HERE");
 
-                //add daily p&L to grand total
+
+
+
+
+
                 Console.WriteLine("end of day" + (currentDay+1));
 
                 //DUMP REMAINING PRODUCT
+                //this represents LOSS
+                int cupsDumped = player.pitcher.cupsLeftInPitcher;
+                int numCust = days[currentDay].customers.Count();
+                double tempRecipeCost = player.GetRecipeCost();
+                double tempLoss = (cupsSold * player.inventory.cups[0].itemPrice);
+                double tempProfit = tempRevenue - (tempRecipeCost * pitchersToday) - tempLoss - cupsDumped;
+
+                player.pitcher.cupsLeftInPitcher = 0;
+
+                //revenue - daily sales * price per cup
+                tempRevenue = cupsSold * player.recipe.pricePerCup;
+                
+                //add daily gross sales to TOTAL SCORE FOR THE WEEK
+                weeklySales += tempRevenue;
+
+                //generate daily p&L report (revenue, profit, gross sales, num of cst int, num of successful interactions)
+
+                player.DailyReport(tempRevenue, tempProfit, tempLoss, cupsDumped, numCust, positiveInteractions, negativeInteractions );
+                
+
+
                 Console.ReadLine();
             }
         }
 
-        public void SellLemonade(/*Player playerIn*/)
+        public bool SellLemonade(/*Player playerIn*/)
         {
             bool success = false;
 
-            //MAKE "CustomerWillBuyLemonade()" and "PlayerCanSellLemonade()"
+            //TODO "CustomerWillBuyLemonade()" and "PlayerCanSellLemonade()"
             try
             {
-                //burn a cup
+                //burn a cup, decrement pitcher.cupsRemain
                 player.inventory.cups.RemoveAt(0);
-                //decrement pitcher.cupsRemain
                 player.pitcher.cupsLeftInPitcher--;
-                //inc player.wallet.money
                 success = true;
             }
             catch (ArgumentOutOfRangeException)
@@ -193,6 +262,7 @@ namespace LemonadeStand.ClassFiles.Game
                 Console.WriteLine("***CANNOT SELL LEMONADE!");
                 Console.WriteLine("check inv cups or pitcher.cupsLeft");
                 Console.WriteLine("this customer is  A N G E R Y.");
+                //you lost the sale, inventory, and product
                 Console.WriteLine("");
                 Console.WriteLine("Would you like to go to the store?");
 
@@ -212,8 +282,11 @@ namespace LemonadeStand.ClassFiles.Game
                 {
                     player.wallet.AdjustMoney(true, player.recipe.pricePerCup);
                     Console.WriteLine("L E M O N A D E  y'all!");
+                    cupsSold++;
                 }
             }
+
+            return success;
         }
     }
 }

@@ -123,7 +123,7 @@ namespace LemonadeStand.ClassFiles.Game
             return tempRecipe;
         }
 
-        private double GetRecipeCost()
+        public double GetRecipeCost()
         {
             Lemon tempLemon = new Lemon();
             IceCube tempIceCube = new IceCube();
@@ -177,6 +177,17 @@ namespace LemonadeStand.ClassFiles.Game
             }                
         }
         
+        public void DailyReport(double revenueIn, double profitIn, double tempLossIn, int cupsDumpedIn, int numCustIn, int positiveInteractionsIn, int negativeInteractionsIn )
+        {
+            Console.WriteLine("--DAILY REPORT--" + Environment.NewLine + 
+                "Revenue: " + revenueIn.ToString(). + Environment.NewLine + 
+                "Profit: " + profitIn.ToString() + Environment.NewLine + 
+                "Cups sold:" + positiveInteractionsIn.ToString() + Environment.NewLine + 
+                "Cups dumped: " + cupsDumpedIn.ToString() + Environment.NewLine + 
+                "Loss: " + tempLossIn.ToString() + Environment.NewLine +
+                "Negative Interactions" + negativeInteractionsIn.ToString() + Environment.NewLine +
+                "**END OF REPORT**" + Environment.NewLine + Environment.NewLine);
+        }
 
     }
 }
