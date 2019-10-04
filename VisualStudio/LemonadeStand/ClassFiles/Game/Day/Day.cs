@@ -24,6 +24,19 @@ namespace LemonadeStand.ClassFiles.Game.Day
             //set play time remaining for the day
             //timeRemaining = 100.0;
 
+            if (weather.happinessIndex > 80)
+            {
+                customerCount += (customerCount / 2);
+            }
+            else if (weather.happinessIndex > 70)
+            {
+                customerCount += (customerCount / 3);
+            }
+            else if (weather.happinessIndex > 60)
+            {
+                customerCount += (customerCount / 4);
+            }
+
             customers = new List<Customer>();
 
             //add 100 customers to the list each day

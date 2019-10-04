@@ -128,7 +128,7 @@ namespace LemonadeStand.ClassFiles.Game
             //player = playerIn;
             Console.WriteLine("PLAY GAME NOW!!");
             Console.ReadLine();
-            for (int i = 0; i<days.Count; i++)
+            for (int i = 0; i < days.Count; i++)
             {
                 //display the current day
                 currentDay = i;
@@ -144,7 +144,7 @@ namespace LemonadeStand.ClassFiles.Game
 
                 //OPTION TO GO TO THE STORE
                 Console.WriteLine("Would you like to go to the store?");
-                if (Console.ReadLine()=="y")
+                if (Console.ReadLine() == "y")
                 {
                     player = store.GoToTheStore();
                 }
@@ -179,17 +179,17 @@ namespace LemonadeStand.ClassFiles.Game
                 for (int j = 0; j < days[currentDay].customers.Count; j++)
                 {
 
-                //cupsSold = 0;
+                    //cupsSold = 0;
 
 
                     //if custy will buy and has an .internalResistance <=the day.weather's .hapIDX))
                     if (days[currentDay].customers[j].willPurchase)
                     {
                         customerInteractions++;
-                        
-                        if ((days[currentDay].customers[j].internalResistance <= 
+
+                        if ((days[currentDay].customers[j].internalResistance <=
                              days[currentDay].weather.happinessIndex))
-                        { 
+                        {
                             //verify that recipe meets or exceeds customer preference
                             if (player.recipe.amountOfLemons >= days[currentDay].customers[j].customerPreferences.amountOfLemons &&
                                 player.recipe.amountOfSugarCubes >= days[currentDay].customers[j].customerPreferences.amountOfSugarCubes &&
@@ -216,7 +216,7 @@ namespace LemonadeStand.ClassFiles.Game
 
 
 
-                Console.WriteLine("end of day" + (currentDay+1));
+                Console.WriteLine("end of day" + (currentDay + 1));
                 Console.WriteLine("");
                 Console.WriteLine("You *DUMP* the remaining liquids from the pitcher.");
                 Console.WriteLine("You do not serve liquid remnants!");
@@ -231,26 +231,32 @@ namespace LemonadeStand.ClassFiles.Game
                 double tempRecipeCost = player.GetRecipeCost();
                 tempRevenue = positiveInteractions * player.recipe.pricePerCup;
                 double tempLoss = ((positiveInteractions * player.inventory.cups[0].itemPrice) + //cups frmo sales
-                    (cupsDumped*player.recipe.pricePerCup));
+                    (cupsDumped * player.recipe.pricePerCup));
                 double tempProfit = tempRevenue - (tempRecipeCost * pitchersToday) - tempLoss;
 
 
 
 
-                
+
                 //add daily gross sales to TOTAL SCORE FOR THE WEEK
                 weeklySales += tempRevenue;
 
                 //generate daily p&L report (revenue, profit, gross sales, num of cst int, num of successful interactions)
 
-                player.DailyReport(tempRevenue, tempProfit, tempLoss, cupsDumped, numCust, positiveInteractions, negativeInteractions );
-                
+                player.DailyReport(tempRevenue, tempProfit, tempLoss, cupsDumped, numCust, positiveInteractions, negativeInteractions);
+
 
 
                 Console.ReadLine();
             }
-        }
 
+            Console.WriteLine("Good game, " + player.name + "!");
+            Console.ReadLine();
+            Console.WriteLine("You generated $" + weeklySales.ToString() + " USD dollars in gross sales for the week!");
+            Console.ReadLine();
+            Console.WriteLine("game over you win.");
+
+        }
         public bool SellLemonade(/*Player playerIn*/)
         {
             bool success = false;
