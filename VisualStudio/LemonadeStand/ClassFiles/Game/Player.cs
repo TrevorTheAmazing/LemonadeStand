@@ -108,8 +108,7 @@ namespace LemonadeStand.ClassFiles.Game
 
         public string RecipeReport()
         {
-            return (GetRecipe() + "." + Environment.NewLine +
-               // "The cost of your recipe is $" + GetRecipeCost() + "." + Environment.NewLine +
+            return (GetRecipe() + Environment.NewLine +
                 "You will charge $" + recipe.pricePerCup + " per cup.");
 
         }
@@ -169,7 +168,7 @@ namespace LemonadeStand.ClassFiles.Game
                 }
 
                 //set pitcher.cupsLeft to 100
-                pitcher.cupsLeftInPitcher = 100;
+                pitcher.FillPitcher();
                 return true;
             }
             else

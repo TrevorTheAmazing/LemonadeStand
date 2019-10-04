@@ -29,27 +29,27 @@ namespace LemonadeStand.ClassFiles.Game.Day
             {
                 case (0):
                     this.temperature = random.Next(98, 106);
-                    this.happinessIndex = random.Next(10, 101);
+                    this.happinessIndex = random.Next(80, 101);
                     break;
                 case (1):
                     this.temperature = random.Next(81, 99);
-                    this.happinessIndex = random.Next(25, 101);
+                    this.happinessIndex = random.Next(65, 101);
                     break;
                 case (2):
                     this.temperature = random.Next(72, 82);
-                    this.happinessIndex = random.Next(30, 101);
+                    this.happinessIndex = random.Next(50, 101);
                     break;
                 case (3):
                     this.temperature = random.Next(63, 73);
-                    this.happinessIndex = random.Next(45, 101);
+                    this.happinessIndex = random.Next(39, 101);
                     break;
                 case (4):
                     this.temperature = random.Next(54, 65);
-                    this.happinessIndex = random.Next(55, 101);
+                    this.happinessIndex = random.Next(30, 101);
                     break;
                 case (5):
                     this.temperature = random.Next(48, 55);
-                    this.happinessIndex = random.Next(70, 101);
+                    this.happinessIndex = random.Next(20, 101);
                     break;
                 default:
                     this.temperature = 68;

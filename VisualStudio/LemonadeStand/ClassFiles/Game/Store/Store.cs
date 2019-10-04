@@ -83,7 +83,6 @@ namespace LemonadeStand.ClassFiles.Game.Store
                     Console.WriteLine("How many?");
 
                     //get user's selection
-                    //int tempInputQuantity = 0;
                     try
                     {
                         tempInputQuantity = Int32.Parse(Console.ReadLine());
@@ -131,13 +130,6 @@ namespace LemonadeStand.ClassFiles.Game.Store
 
         private void SellStuff(string itemToSell, int quantity)
         {
-            void addToInventory(List<Item> ListIn, Item item, int itemQuantity)
-            {
-                for (int i = 0; i < itemQuantity; i++)
-                {
-
-                }
-            }
             switch (itemToSell)
             {
                 case "lemon":
@@ -197,8 +189,11 @@ namespace LemonadeStand.ClassFiles.Game.Store
 
         private void LeaveTheStore()
         {
+            Console.WriteLine("");
+            Console.WriteLine("");
             Console.WriteLine("Now set the price per cup!");
             player.SetPricePerCup();
+            Console.WriteLine("");
         }
     }
 }

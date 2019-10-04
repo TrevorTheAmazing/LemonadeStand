@@ -11,10 +11,9 @@ namespace LemonadeStand
     {        
         static void Main(string[] args)
         {
-            //Console.WriteLine("test");
-            //Console.ReadLine();
             Game game = new Game();
-            //game.PlayGame();
+            Console.WriteLine("svM g@me_ov3r");
+            Console.ReadLine();
         }
     }
 }
