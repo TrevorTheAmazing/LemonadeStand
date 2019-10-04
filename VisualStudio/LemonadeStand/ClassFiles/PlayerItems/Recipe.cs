@@ -13,7 +13,6 @@ namespace LemonadeStand.ClassFiles.PlayerItems
         public int amountOfSugarCubes;
         public int amountOfIceCubes;
         public double pricePerCup;
-        //public double itemPrice;
 
         //constructor
         public Recipe()
@@ -22,7 +21,6 @@ namespace LemonadeStand.ClassFiles.PlayerItems
             this.amountOfSugarCubes = 0;
             this.amountOfIceCubes = 0;
             this.pricePerCup = 0.00;
-            //this.itemPrice = 0.00;
         }
         
         //memb methods

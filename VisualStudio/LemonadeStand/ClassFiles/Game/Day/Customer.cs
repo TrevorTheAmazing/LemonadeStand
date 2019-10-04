@@ -16,20 +16,21 @@ namespace LemonadeStand.ClassFiles.Game.Day
         public int internalResistance;
         public double maxPurchasePrice;
         public Recipe customerPreferences;
+        //Random random = new Random();
 
         //constructor
-        public Customer()
+        public Customer(Random randomIn)
         {
-            Random random = new Random();
+            
             this.name = "Customer";
-            this.willPurchase = ((random.Next(0, 101)) >= 50);
-            this.maxPurchasePrice = ((random.NextDouble() * (6.0 - 1.0)) + 1.0);
-            this.internalResistance = random.Next(0, 101);
+            this.willPurchase = ((randomIn.Next(0, 101)) >= 50);
+            this.maxPurchasePrice = ((randomIn.NextDouble() * (6.0 - 1.0)) + 1.0);
+            this.internalResistance = randomIn.Next(0, 101);
 
             this.customerPreferences = new Recipe();
-            customerPreferences.amountOfLemons = random.Next(0, 2);
-            customerPreferences.amountOfSugarCubes = random.Next(0, 2);
-            customerPreferences.amountOfIceCubes = random.Next(0, 2);
+            customerPreferences.amountOfLemons = randomIn.Next(0, 3);
+            customerPreferences.amountOfSugarCubes = randomIn.Next(0, 3);
+            customerPreferences.amountOfIceCubes = randomIn.Next(0, 3);
             customerPreferences.pricePerCup = 0.0;
         }
 

@@ -13,12 +13,13 @@ namespace LemonadeStand.ClassFiles.Game.Day
         public int temperature;
         public int happinessIndex;
         public string predictedForecast;
+        Random random = new Random();
         private List<string> weatherConditions = new List<string>() { "It's a scorcher wow such heat", "Sunny and hot", "Exceptionally nice and borderline perfect", "Cloudy but warm", "No rain but pretty chill", "Cold and rainy" };
 
         //constru
         public Weather()
         {
-            Random random = new Random();
+            //random = new Random();
             int tempRando = random.Next(0, weatherConditions.Count);
             //this.condition = weatherConditions[random.Next(0, weatherConditions.Count)];
             this.condition = weatherConditions[tempRando];

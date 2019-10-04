@@ -16,12 +16,16 @@ namespace LemonadeStand.ClassFiles.Game
         private bool gameIsSetUp = false;
         private bool playerIsSetUp = false;
         Player player = new Player();
+        public int tempYes;
+        public int tempNo;
+        Random random = new Random();
 
         public Game()
         {
+            random = new Random();
             do
             {
-                SetupGame();                
+                SetupGame(random);                
             } while (!gameIsSetUp);
 
             if (gameIsSetUp)
@@ -35,7 +39,7 @@ namespace LemonadeStand.ClassFiles.Game
         }
 
         //memb meths
-        public void SetupGame()
+        public void SetupGame(Random randomIn)
         {
             //set up player
             playerIsSetUp = false;
@@ -98,7 +102,7 @@ namespace LemonadeStand.ClassFiles.Game
             //create a Day list with 7 Day items having a temperature
             for (int i = 0; i < 7; i++)
             {
-                days.Add(new Day.Day());
+                days.Add(new Day.Day(random));
             }
 
             currentDay = 0;
@@ -121,6 +125,8 @@ namespace LemonadeStand.ClassFiles.Game
                 //display the current day
                 currentDay = i;
                 Console.WriteLine("Day #" + (currentDay + 1));
+                tempYes = 0;
+                tempNo = 0;
 
                 //begin the day's countdown timer
                 //fire off a number of 'interaction' events based on the day.weather.happinessIndex?
@@ -133,15 +139,17 @@ namespace LemonadeStand.ClassFiles.Game
                     if (days[currentDay].customers[j].willPurchase)
                     {
                         //verify that recipe meets or exceeds customer preference
-                        if (player.recipe.amountOfLemons >= days[currentDay].customers[j].customerPreferences.amountOfLemons ||
-                            player.recipe.amountOfSugarCubes >= days[currentDay].customers[j].customerPreferences.amountOfSugarCubes ||
+                        if (player.recipe.amountOfLemons >= days[currentDay].customers[j].customerPreferences.amountOfLemons &&
+                            player.recipe.amountOfSugarCubes >= days[currentDay].customers[j].customerPreferences.amountOfSugarCubes &&
                             player.recipe.amountOfIceCubes >= days[currentDay].customers[j].customerPreferences.amountOfIceCubes)
                         {
-                            SellLemonade();
+                            //SellLemonade();
+                            tempYes++;
                         } 
                         else
                         {
-                            Console.WriteLine("no lemonade.");
+                            //Console.WriteLine("no lemonade.");
+                            tempNo++;
                         }
                     }
                 }
@@ -149,13 +157,15 @@ namespace LemonadeStand.ClassFiles.Game
                 //generate daily p&L report (revenue, profit, gross sales, num of cst int, num of successful interactions)
                 //add daily p&L to grand total
                 Console.WriteLine("end of day" + (currentDay+1));
+                Console.WriteLine("tempYes = " + tempYes);
+                Console.WriteLine("tempNo = " + tempNo);
                 Console.ReadLine();
             }
         }
 
         public void SellLemonade(/*Player playerIn*/)
         {
-            Console.WriteLine("L E M O N A D E  y'all");
+            //Console.WriteLine("L E M O N A D E  y'all");
 //            Player = playerIn;
             //PURCHASE aka SALE
             //inc player.wallet.money
