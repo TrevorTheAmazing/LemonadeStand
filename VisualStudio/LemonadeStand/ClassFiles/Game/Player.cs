@@ -108,8 +108,8 @@ namespace LemonadeStand.ClassFiles.Game
 
         public string RecipeReport()
         {
-            return (GetRecipe() + Environment.NewLine +
-                "You will charge $" + recipe.pricePerCup + " per cup.");
+            return (Environment.NewLine + GetRecipe() + Environment.NewLine +
+                "You will charge $" + recipe.pricePerCup + " per cup." + Environment.NewLine);
 
         }
 
@@ -135,15 +135,15 @@ namespace LemonadeStand.ClassFiles.Game
             return (priceOfLemons + priceOfSugarCubes + priceOfIceCubes);
         }
 
-        public string InventoryReport()
-        {
-            string tempInventory = "You have " + inventory.lemons.Count + " lemons, " + 
-                inventory.sugarCubes.Count + " sugar cubes, and " + 
-                inventory.iceCubes.Count + " ice cubes." + Environment.NewLine + 
-                "You also have " + inventory.cups.Count + " cups.";
+        //public string InventoryReport()
+        //{
+        //    string tempInventory = "You have " + inventory.lemons.Count + " lemons, " + 
+        //        inventory.sugarCubes.Count + " sugar cubes, and " + 
+        //        inventory.iceCubes.Count + " ice cubes." + Environment.NewLine + 
+        //        "You also have " + inventory.cups.Count + " cups.";
 
-            return tempInventory;
-        }
+        //    return tempInventory;
+        //}
 
         public bool MakeLemonade()
         {

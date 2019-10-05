@@ -39,8 +39,10 @@ namespace LemonadeStand.ClassFiles.Game.Store
                 Console.WriteLine("");
 
                 //INVENTORY REPORT HERE
-                Console.WriteLine(player.InventoryReport());
-                Console.WriteLine("");
+                //Console.WriteLine(player.InventoryReport());
+                //Console.WriteLine(inventory.InventoryReport());
+                player.inventory.InventoryReport();
+                
 
                 Lemon tempLemon = new Lemon();
                 Console.WriteLine("0 - Buy lemons for $" + tempLemon.itemPrice.ToString() + ".");
@@ -60,8 +62,8 @@ namespace LemonadeStand.ClassFiles.Game.Store
                 Console.WriteLine("");
 
                 //recipe report
-                Console.WriteLine(player.RecipeReport());
-                Console.WriteLine("");
+                //Console.WriteLine(player.RecipeReport());
+                player.RecipeReport();
                 Console.WriteLine("What would you like to purchase from the store?");
 
                 //get user's selection
@@ -91,6 +93,10 @@ namespace LemonadeStand.ClassFiles.Game.Store
                     {
                         tempInputQuantity = 0;
                     }
+                }
+                else
+                {
+                    leaveStore = true;
                 }
 
                 //find the item the player wants to buy in the list
