@@ -71,8 +71,8 @@ namespace LemonadeStand.ClassFiles.Game
             Console.WriteLine("enter the number of ice cubes in your recipe:");
             recipe.amountOfIceCubes = Int32.Parse(Console.ReadLine());
 
-            Console.WriteLine("enter the price per cup of your recipe:");
-            recipe.pricePerCup = Double.Parse(Console.ReadLine());
+            //Console.WriteLine("enter the price per cup of your recipe:");
+            //recipe.pricePerCup = Double.Parse(Console.ReadLine());
 
             Console.WriteLine("");
             Console.WriteLine("");

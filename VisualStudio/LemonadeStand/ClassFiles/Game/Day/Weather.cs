@@ -13,19 +13,24 @@ namespace LemonadeStand.ClassFiles.Game.Day
         public int temperature;
         public int happinessIndex;
         public string predictedForecast;
-        Random random = new Random();
+        //Random random = new Random();
+        Random random;
         private List<string> weatherConditions = new List<string>() { "It's a scorcher wow such heat", "Sunny and hot", "Exceptionally nice and borderline perfect", "Cloudy but warm", "No rain but pretty chill", "Cold and rainy" };
 
         //constru
-        public Weather()
+        public Weather(Random randomIn)
         {
+            random = randomIn;
             //random = new Random();
             int tempRando = random.Next(0, weatherConditions.Count);
+            //int tempRando = random.Next(0, weatherConditions.Count);
             //this.condition = weatherConditions[random.Next(0, weatherConditions.Count)];
             this.condition = weatherConditions[tempRando];
+            //this.condition = weatherConditions[random];
 
             //put logic here to set the random range based on the conditions
             switch (tempRando)
+            //switch (random)
             {
                 case (0):
                     this.temperature = random.Next(98, 106);

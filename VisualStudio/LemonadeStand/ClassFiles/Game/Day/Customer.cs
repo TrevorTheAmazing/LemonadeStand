@@ -23,14 +23,14 @@ namespace LemonadeStand.ClassFiles.Game.Day
         {
             
             this.name = "Customer";
-            this.willPurchase = ((randomIn.Next(0, 101)) >= 50);
-            this.maxPurchasePrice = ((randomIn.NextDouble() * (6.0 - 0.0)) + 0.0);
-            this.internalResistance = randomIn.Next(0, 101);
+            this.willPurchase = ((randomIn.Next(0, 101)) >= 30);
+            this.maxPurchasePrice = ((randomIn.NextDouble() * (8.0 - 0.0)) + 0.0);
+            this.internalResistance = randomIn.Next(0, 40);
 
             this.customerPreferences = new Recipe();
-            customerPreferences.amountOfLemons = randomIn.Next(0, 3);
+            customerPreferences.amountOfLemons = randomIn.Next(0, 4);
             customerPreferences.amountOfSugarCubes = randomIn.Next(0, 4);
-            customerPreferences.amountOfIceCubes = randomIn.Next(0, 3);
+            customerPreferences.amountOfIceCubes = randomIn.Next(0, 4);
             customerPreferences.pricePerCup = 0.0;
         }
 

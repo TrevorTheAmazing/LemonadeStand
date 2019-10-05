@@ -11,7 +11,8 @@ namespace LemonadeStand
     {        
         static void Main(string[] args)
         {
-            Game game = new Game();
+            Random random = new Random();
+            Game game = new Game(random);
             Console.WriteLine("svM g@me_ov3r");
             Console.ReadLine();
         }

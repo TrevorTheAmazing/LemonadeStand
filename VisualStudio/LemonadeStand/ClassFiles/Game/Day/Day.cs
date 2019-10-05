@@ -19,7 +19,8 @@ namespace LemonadeStand.ClassFiles.Game.Day
         public Day(Random randomIn)
         {
             //set the weather for the day
-            weather = new Weather();
+            //weather = new Weather();
+            weather = new Weather(randomIn);
 
             //set play time remaining for the day
             //timeRemaining = 100.0;

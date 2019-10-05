@@ -204,8 +204,14 @@ namespace LemonadeStand.ClassFiles.Game.Store
                 player.SetRecipe();
             }
 
-            Console.WriteLine("Now set the price per cup!");
-            player.SetPricePerCup();
+            Console.WriteLine("");
+
+            Console.WriteLine("Would you like to set the price per cup?");
+            if (Console.ReadLine()=="y")
+            {
+                player.SetPricePerCup();
+            }
+            
             Console.WriteLine("");
 
         }
