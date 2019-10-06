@@ -22,13 +22,10 @@ namespace LemonadeStand.ClassFiles.Game.Store
         }
 
         //memb meths       
-        //public store 'interface', private store methods
         public Player GoToTheStore()
         {
             bool leaveStore = false;
-
             Console.Clear();
-
             do
             {
                 double tempMoney = player.wallet.CountMoney();
@@ -39,30 +36,22 @@ namespace LemonadeStand.ClassFiles.Game.Store
                 Console.WriteLine("");
 
                 //INVENTORY REPORT HERE
-                //Console.WriteLine(player.InventoryReport());
-                //Console.WriteLine(inventory.InventoryReport());
                 player.inventory.InventoryReport();
                 
 
                 Lemon tempLemon = new Lemon();
                 Console.WriteLine("0 - Buy lemons for $" + tempLemon.itemPrice.ToString() + ".");
-
                 SugarCube tempSugarCube = new SugarCube();
                 Console.WriteLine("1 - Buy sugar cubes for $" + tempSugarCube.itemPrice.ToString() + ".");
-
                 IceCube tempIceCube = new IceCube();
                 Console.WriteLine("2 - Buy ice cubes for $" + tempIceCube.itemPrice.ToString() + ".");
-
                 Cup tempCup = new Cup();
                 Console.WriteLine("3 - Buy cups for $" + tempCup.itemPrice.ToString() + ".");
-
                 Console.WriteLine("");
                 Console.WriteLine("9 - Purchase nothing more.  Leave the store.");
                 Console.WriteLine("");
                 Console.WriteLine("");
 
-                //recipe report
-                //Console.WriteLine(player.RecipeReport());
                 player.RecipeReport();
                 Console.WriteLine("What would you like to purchase from the store?");
 
@@ -126,11 +115,7 @@ namespace LemonadeStand.ClassFiles.Game.Store
                 {
                     LeaveTheStore();
                 }
-                
-
-            } while (!leaveStore);
-
-            
+            } while (!leaveStore);            
             return player;
         }
 
@@ -195,27 +180,32 @@ namespace LemonadeStand.ClassFiles.Game.Store
 
         private void LeaveTheStore()
         {
+            bool recipeIsSet = false;
+            bool priceIsSet = false;
             Console.WriteLine("");
             Console.WriteLine("");
-            
-            //Console.WriteLine("Would you like to change your recipe?");
-            //if (Console.ReadLine()=="y")
-            if (Validation.GetUserInput("Would you like to set or change your recipe?", "str")=="y")
+
+            do
             {
-                player.SetRecipe();
-            }
+                if (Validation.GetUserInput("Would you like to set or change your recipe?", "str") == "y")
+                {
+                    player.SetRecipe();
+                    recipeIsSet = true;
+                }
 
-            Console.WriteLine("");
+                Console.WriteLine("");
+            } while (!recipeIsSet);
 
-            //Console.WriteLine("Would you like to set or change the price per cup?");
-            //if (Console.ReadLine()=="y")
-            if (Validation.GetUserInput("Would you like to set or change the price per cup?", "str") == "y")
+            do
             {
-                player.SetPricePerCup();
-            }
-            
-            Console.WriteLine("");
+                if (Validation.GetUserInput("Would you like to set or change the price per cup?", "str") == "y")
+                {
+                    player.SetPricePerCup();
+                    priceIsSet = true;
+                }
 
+                Console.WriteLine("");
+            } while (!priceIsSet);            
         }
     }
 }

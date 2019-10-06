@@ -13,7 +13,7 @@ namespace LemonadeStand
         {
             Random random = new Random();
             Game game = new Game(random);
-            Console.WriteLine("svM g@me_ov3r");
+            Console.WriteLine("Game Over.");
             Console.ReadLine();
         }
     }

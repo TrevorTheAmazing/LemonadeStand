@@ -20,7 +20,6 @@ namespace LemonadeStand.ClassFiles.PlayerItems
         }
 
         //memb methods 
-        //FIllPitcher...
         public void FillPitcher()
         {
             cupsLeftInPitcher = maxCapacity;

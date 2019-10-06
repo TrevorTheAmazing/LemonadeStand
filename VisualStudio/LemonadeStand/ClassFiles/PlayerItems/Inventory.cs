@@ -27,13 +27,10 @@ namespace LemonadeStand.ClassFiles.PlayerItems
         //public string InventoryReport() to give the name of the item and the quantity of the item
         public void InventoryReport()
         {
-            //string tempInventory = Environment.NewLine + "You have " + /*inventory.*/lemons.Count + " lemons, " +
-            Console.WriteLine( Environment.NewLine + "You have " + /*inventory.*/lemons.Count + " lemons, " +
-                /*inventory.*/sugarCubes.Count + " sugar cubes, and " +
-                /*inventory.*/iceCubes.Count + " ice cubes." + Environment.NewLine +
-                "You also have " + /*inventory.*/cups.Count + " cups." + Environment.NewLine);
-
-            //return tempInventory;
+            Console.WriteLine( Environment.NewLine + "You have " + lemons.Count + " lemons, " +
+                sugarCubes.Count + " sugar cubes, and " +
+                iceCubes.Count + " ice cubes." + Environment.NewLine +
+                "You also have " + cups.Count + " cups." + Environment.NewLine);
         }
     }
 }

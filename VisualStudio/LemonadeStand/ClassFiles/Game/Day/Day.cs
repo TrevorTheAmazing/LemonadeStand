@@ -19,7 +19,6 @@ namespace LemonadeStand.ClassFiles.Game.Day
         public Day(Random randomIn)
         {
             //set the weather for the day
-            //weather = new Weather();
             weather = new Weather(randomIn);
 
             //set play time remaining for the day
@@ -42,9 +41,7 @@ namespace LemonadeStand.ClassFiles.Game.Day
 
             //add 100 customers to the list each day
             customers = BuildDailyCustomerList( customers, customerCount, randomIn);
-            
             //day complete.
-            
         }
 
         //memb meths

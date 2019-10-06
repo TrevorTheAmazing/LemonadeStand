@@ -37,6 +37,5 @@ namespace LemonadeStand.ClassFiles.Game.Day
         
 
         //memb meths
-
     }
 }

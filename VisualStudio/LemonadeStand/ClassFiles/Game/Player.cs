@@ -67,28 +67,17 @@ namespace LemonadeStand.ClassFiles.Game
 
         public void SetRecipe()
         {
-            //bool recipeIsSet = false;
             recipeIsSet = false;
             do
             {
                 try
                 {
-
-
-                    //Console.WriteLine("enter the number of lemons in your recipe:");
-                    //recipe.amountOfLemons = Int32.Parse(Console.ReadLine());
                     recipe.amountOfLemons = Int32.Parse(Validation.GetUserInput("Enter the number of lemons in your recipe: ", "int"));
 
-                    //Console.WriteLine("enter the number of sugar cubes in your recipe: ");
-                    //recipe.amountOfSugarCubes = Int32.Parse(Console.ReadLine());
                     recipe.amountOfSugarCubes = Int32.Parse(Validation.GetUserInput("Enter the number of sugar cubes in your recipe: ", "int"));
 
-                    //Console.WriteLine("enter the number of ice cubes in your recipe: ");
-                    //recipe.amountOfIceCubes = Int32.Parse(Console.ReadLine());
                     recipe.amountOfIceCubes = Int32.Parse(Validation.GetUserInput("enter the number of ice cubes in your recipe: ", "int"));
 
-                    //Console.WriteLine("enter the price per cup of your recipe:");
-                    //recipe.pricePerCup = Double.Parse(Console.ReadLine());
                     if (recipe.amountOfLemons > 0 && recipe.amountOfSugarCubes > 0 && recipe.amountOfIceCubes > 0)
                     {
                         recipeIsSet = true;
@@ -153,32 +142,10 @@ namespace LemonadeStand.ClassFiles.Game
             } while (!priceIsSet);
         }
 
-                //Console.WriteLine("How much would you like to charge per cup?");
-
-            //try
-            //{
-            //    tempPrice = Double.Parse(Console.ReadLine());
-            //}
-            //catch(Exception)
-            //{
-            //    tempPrice = -1.0;
-            //}
-            //finally
-            //{
-            //    if (tempPrice > 0.0)
-            //    {
-            //        recipe.pricePerCup = tempPrice;
-            //    }
-            //    else
-            //    {
-            //        SetPricePerCup();
-            //    }
-            //}
-
-            public string RecipeReport()
+        public string RecipeReport()
         {
-            return (Environment.NewLine + GetRecipe() + Environment.NewLine +
-                "You will charge $" + recipe.pricePerCup + " per cup." + Environment.NewLine);
+        return (Environment.NewLine + GetRecipe() + Environment.NewLine +
+            "You will charge $" + recipe.pricePerCup + " per cup." + Environment.NewLine);
 
         }
 
@@ -204,16 +171,6 @@ namespace LemonadeStand.ClassFiles.Game
             return (priceOfLemons + priceOfSugarCubes + priceOfIceCubes);
         }
 
-        //public string InventoryReport()
-        //{
-        //    string tempInventory = "You have " + inventory.lemons.Count + " lemons, " + 
-        //        inventory.sugarCubes.Count + " sugar cubes, and " + 
-        //        inventory.iceCubes.Count + " ice cubes." + Environment.NewLine + 
-        //        "You also have " + inventory.cups.Count + " cups.";
-
-        //    return tempInventory;
-        //}
-
         public bool MakeLemonade()
         {
             //check quantities on hand prior to reducing inventory
@@ -236,7 +193,7 @@ namespace LemonadeStand.ClassFiles.Game
                     inventory.iceCubes.RemoveAt(0);
                 }
 
-                //set pitcher.cupsLeft to 100
+                //set pitcher.cupsLeft to 100%
                 pitcher.FillPitcher();
                 return true;
             }
@@ -249,9 +206,9 @@ namespace LemonadeStand.ClassFiles.Game
         public void DailyReport(double revenueIn, double profitIn, double tempLossIn, int cupsDumpedIn, int numCustIn, int positiveInteractionsIn, int negativeInteractionsIn )
         {
             Console.WriteLine("--DAILY REPORT--" + Environment.NewLine + 
-                "Revenue: " + revenueIn.ToString() + Environment.NewLine + 
-                "Profit: " + profitIn.ToString() + Environment.NewLine + 
-                "Cups sold:" + positiveInteractionsIn.ToString() + Environment.NewLine + 
+                "Revenue: $" + revenueIn.ToString() + Environment.NewLine + 
+                "Profit: $" + profitIn.ToString() + Environment.NewLine + 
+                "Cups sold: " + positiveInteractionsIn.ToString() + Environment.NewLine + 
                 "Cups dumped: " + cupsDumpedIn.ToString() + Environment.NewLine + 
                 "Loss: " + tempLossIn.ToString() + Environment.NewLine +
                 "Total Customers: " + numCustIn.ToString() + Environment.NewLine +
