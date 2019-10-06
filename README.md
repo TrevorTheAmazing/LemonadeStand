@@ -10,7 +10,6 @@ DONE - (10 points): As a player, I want each customer to be a separate object wi
 DONE - (10 points): As a player, I want a weather system that includes a forecast and actual weather, so that I can get a predicted forecast for a day or week and then what the actual weather is on the given day.
 DONE - (10 points (5 points each)): As a developer, I want to pinpoint at least two placeswhere I used one of the SOLID design principles and discuss my reasoning, so that I can properly understand good code design. Minimum of two SOLID design principlesmust be used. 
 DONE - (10 points): As a developer, I want to implement the SOLID design principles as well as C# best practices in my project, so that the project is as well-designed as possible.
- -use daily report to generate a weekly report (sum of all the dailys)
 DONE - (10 points): As a player, I want my game to be playable for at least seven days.
 DONE - (25 points): As a player, I want the basic Lemonade Stand gameplay to be present.
 
@@ -19,11 +18,5 @@ Bonus Points:
 (5 points): As a player, I want the game to be playable for more than one player, so that I can have multiple humans play each other or a human play a computer.
 
 (5 points) As a developer, I want to integrate a Weather API, so that my game has real-time weather based on a current temperature and forecast.Classes You Will Use (you may need more than what is provided):Program WeatherCustomerGameInventoryPlayerStoreDayUserInterface
-
-TO DO:
-0. move routines out of GAME class to the classes in which they belong (reports, sales transactions, etc.)
-1. dont keep prompting the player to make more if player cannot make more during the day.
-2. weather API
-3. weekly game metrics (cupsSold, total loss, etc.)
 
 

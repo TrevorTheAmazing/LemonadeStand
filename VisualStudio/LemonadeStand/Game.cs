@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using LemonadeStand.ClassFiles.Game.Day;
 using LemonadeStand.ClassFiles.Game.Store;
+using LemonadeStand.ClassFiles;
 
 namespace LemonadeStand.ClassFiles.Game
 {
@@ -57,7 +58,7 @@ namespace LemonadeStand.ClassFiles.Game
             //set the player's name
             Console.WriteLine("Hello, Player.  Welcome to '.oO0 - L E M O N A D E Stand' game!");
             Console.WriteLine("");
-            Console.WriteLine("Please enter your name!");
+            //Console.WriteLine("Please enter your name!");
 
             do
             {
@@ -79,7 +80,7 @@ namespace LemonadeStand.ClassFiles.Game
             Console.WriteLine("You will need ingredient(s) to prepare your recipe.");
             Console.ReadLine();
             //Console.WriteLine("");
-            Console.WriteLine("You can go to the store to buy supplies.  You will go to the store now.");
+            Console.WriteLine("You can go to the store to buy supplies.");
             Console.ReadLine();
             //Console.WriteLine("");
             Console.WriteLine("You will prepare your recipe upon your return.");
@@ -88,18 +89,18 @@ namespace LemonadeStand.ClassFiles.Game
             //set up the store
             store = new Store.Store(player);
 
-            Console.WriteLine("Would you like to go to the store now?");
-            if (Console.ReadLine()=="y")
-            {
-                player = store.GoToTheStore();
-            }
+            //Console.WriteLine("Would you like to go to the store now?");
+            //if (Console.ReadLine()=="y")
+            //{
+            //    player = store.GoToTheStore();
+            //}
 
             //RETURN FROM THE STORE //!//
             //Console.Clear();
-            Console.WriteLine("You return from the store." + Environment.NewLine + Environment.NewLine + 
-                "Now you must prepare your recipe!" + Environment.NewLine +  "Only then will you have lemonade to sell.");
-            //Console.WriteLine("");
-            Console.ReadLine();
+            //Console.WriteLine("You return from the store." + Environment.NewLine + Environment.NewLine + 
+            //    "Now you must prepare your recipe!" + Environment.NewLine +  "Only then will you have lemonade to sell.");
+            ////Console.WriteLine("");
+            //Console.ReadLine();
             //Console.WriteLine(player.RecipeReport());
 
             //Console.WriteLine("");

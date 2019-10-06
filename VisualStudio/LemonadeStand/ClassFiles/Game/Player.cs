@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using LemonadeStand.ClassFiles.PlayerItems;
 using LemonadeStand.ClassFiles.Game.Store;
 using LemonadeStand.ClassFiles.Items;
+using LemonadeStand.ClassFiles;
 
 namespace LemonadeStand.ClassFiles.Game
 {
@@ -38,7 +39,8 @@ namespace LemonadeStand.ClassFiles.Game
             string tempPlayerName = "";
             try
             {
-                tempPlayerName = Console.ReadLine();
+                //tempPlayerName = Console.ReadLine();
+                tempPlayerName = Validation.GetUserInput("Please enter your name: ", "str");
             }
             catch (Exception)
             {
@@ -64,12 +66,17 @@ namespace LemonadeStand.ClassFiles.Game
 
         public void SetRecipe()
         {
-            Console.WriteLine("enter the number of lemons in your recipe:");
-            recipe.amountOfLemons = Int32.Parse(Console.ReadLine());
-            Console.WriteLine("enter the number of sugar cubes in your recipe:");
-            recipe.amountOfSugarCubes = Int32.Parse(Console.ReadLine());
-            Console.WriteLine("enter the number of ice cubes in your recipe:");
-            recipe.amountOfIceCubes = Int32.Parse(Console.ReadLine());
+            //Console.WriteLine("enter the number of lemons in your recipe:");
+            //recipe.amountOfLemons = Int32.Parse(Console.ReadLine());
+            recipe.amountOfLemons = Int32.Parse(Validation.GetUserInput("Enter the number of lemons in your recipe: ", "int"));
+
+            //Console.WriteLine("enter the number of sugar cubes in your recipe: ");
+            //recipe.amountOfSugarCubes = Int32.Parse(Console.ReadLine());
+            recipe.amountOfSugarCubes = Int32.Parse(Validation.GetUserInput("Enter the number of sugar cubes in your recipe: ", "int"));
+
+            //Console.WriteLine("enter the number of ice cubes in your recipe: ");
+            //recipe.amountOfIceCubes = Int32.Parse(Console.ReadLine());
+            recipe.amountOfIceCubes = Int32.Parse(Validation.GetUserInput("enter the number of ice cubes in your recipe: ", "int"));
 
             //Console.WriteLine("enter the price per cup of your recipe:");
             //recipe.pricePerCup = Double.Parse(Console.ReadLine());
