@@ -97,11 +97,12 @@ namespace LemonadeStand.ClassFiles.Game
 
             //RETURN FROM THE STORE //!//
             //Console.Clear();
-            //Console.WriteLine("You return from the store." + Environment.NewLine + Environment.NewLine + 
-            //    "Now you must prepare your recipe!" + Environment.NewLine +  "Only then will you have lemonade to sell.");
-            ////Console.WriteLine("");
-            //Console.ReadLine();
-            //Console.WriteLine(player.RecipeReport());
+            Console.WriteLine("You return from the store." + Environment.NewLine + Environment.NewLine + 
+                "Now you must prepare your recipe!" + Environment.NewLine +  "Only then will you have lemonade to sell.");
+            Console.WriteLine("");
+            Console.ReadLine();
+            Console.WriteLine(player.RecipeReport());
+            Console.WriteLine("");
 
             //Console.WriteLine("");
             /*Console.WriteLine("You attempt to make lemonade.");
@@ -129,8 +130,8 @@ namespace LemonadeStand.ClassFiles.Game
 
             //Console.WriteLine(days[currentDay].weather.WeatherReport());
 
-            Console.WriteLine("Tomorrow's weather is predicted to be: " + (days[currentDay].weather.predictedForecast) + ".");
-            Console.ReadKey();
+            //Console.WriteLine("Tomorrow's weather is predicted to be: " + (days[currentDay].weather.predictedForecast) + ".");
+            //Console.ReadKey();
 
             gameIsSetUp = true;
         }
@@ -158,7 +159,7 @@ namespace LemonadeStand.ClassFiles.Game
 
             weeklySales = 0;
             //player = playerIn;
-            Console.WriteLine("PLAY GAME NOW!!");
+            //Console.WriteLine("PLAY GAME NOW!!");
             //Console.ReadLine();
             for (int i = 0; i < days.Count; i++)
             {
@@ -170,41 +171,63 @@ namespace LemonadeStand.ClassFiles.Game
                 customerInteractions = 0;
                 positiveInteractions = 0;
                 negativeInteractions = 0;
-
-                //display daily info: cur day, weather, store, make lemonade...
+                
                 Console.Clear();
+                Console.WriteLine("GET READY FOR DAY# " + currentDay.ToString());
+                Console.ReadLine();
+                //display daily info: cur day, weather, store, make lemonade...
                 Console.WriteLine("Day #" + (currentDay + 1));                
                 Console.WriteLine(days[currentDay].weather.WeatherReport());
+                Console.WriteLine("Tomorrow's conditions are predicted to be: " + days[currentDay].weather.WeatherPrediction() + ".");
                 Console.ReadLine();
 
-                Console.WriteLine("Would you like to go to the store?");
-                if (Console.ReadLine() == "y")
+               
+                if (Validation.GetUserInput("Would you like to go to the store?", "str")=="y")
                 {
                     player = store.GoToTheStore();
                 }
-
-                //MAKE THE LEMONADE
-                if (player.MakeLemonade())
-                {
-                    pitchersToday = 1;
-                    Console.WriteLine("");
-                    Console.WriteLine("You successfully made the L E M O N A D E.");
-                    Console.WriteLine("");
-                }
-                else
-                {
-                    Console.WriteLine("You have insufficient L E M O N A D E.  You will need lemonade to sell.");
-                    //OPTION TO GO TO THE STORE
-                    Console.WriteLine("Would you like to go to the store?");
-                    if (Console.ReadLine() == "y")
+                //Console.WriteLine("Would you like to go to the store?");
+                //if (Console.ReadLine() == "y")
+                //{
+                //    player = store.GoToTheStore();
+                //}
+                
+                            //Console.WriteLine("");
+                Console.WriteLine("You attempt to make lemonade for the day...");
+                Console.WriteLine("");
+                Console.ReadLine();
+                bool lemonadeIsMade = false;
+                do
+                {                  
+                    //MAKE THE LEMONADE
+                    if (player.MakeLemonade())
                     {
-                        player = store.GoToTheStore();
+                        //pitchersToday = 1;
+                        pitchersToday++;
+                        lemonadeIsMade = true;
+                        Console.WriteLine("");
+                        Console.WriteLine("You successfully made the L E M O N A D E.");
+                        Console.WriteLine("");
                     }
-                }
-                               
+                    else
+                    {
+                        Console.WriteLine("You have insufficient L E M O N A D E.  You will need lemonade to sell.");
+                        //OPTION TO GO TO THE STORE
+                        //Console.WriteLine("Would you like to go to the store?");
+                        //if (Console.ReadLine() == "y")
+                        if (Validation.GetUserInput("Would you like to go to the store?", "str") == "y")
+                        {
+                            player = store.GoToTheStore();
+                        }
+                    }
+                } while (!lemonadeIsMade);
+
+
+
 
                 //DO THE DAY
-
+                Console.WriteLine("DAY# " + currentDay.ToString() + " begins... NOW!");
+                Console.ReadLine();
                 //begin the day's countdown timer?
                 //fire off a number of 'interaction' events based on the day.weather.happinessIndex?
                 
@@ -352,14 +375,21 @@ namespace LemonadeStand.ClassFiles.Game
                     CannotSellLemonade();
                     Console.WriteLine("You have exhausted your supply of .oO0 - L E M O N A D E!");
                     Console.WriteLine("");
-                    Console.WriteLine("Would you like to combine your inventory items to create more lemonade?");
+                    //Console.WriteLine("Would you like to combine your inventory items to create more lemonade?");
 
-                    if (Console.ReadLine() == "y")
+                    //if (Console.ReadLine() == "y")
+                    if (Validation.GetUserInput("Would you like to combine your inventory items to create more lemonade?", "str")=="y")
                     {
                         if (player.MakeLemonade())
                         {
+                            pitchersToday++;
+                            if (player.pitcher.DispenseBeverage())
+                            {
+                                
+                            
                             Console.WriteLine("You have upset this customer, but you are forgiven because this one is 'on the house.'");
                             success = true;
+                            }
                         }
                         else
                         {

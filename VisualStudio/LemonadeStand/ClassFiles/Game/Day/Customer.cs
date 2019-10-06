@@ -24,7 +24,7 @@ namespace LemonadeStand.ClassFiles.Game.Day
             
             this.name = "Customer";
             this.willPurchase = ((randomIn.Next(0, 101)) >= 30);
-            this.maxPurchasePrice = ((randomIn.NextDouble() * (8.0 - 0.0)) + 0.0);
+            this.maxPurchasePrice = ((randomIn.NextDouble() * (8.0 - 1.0)) + 1.0);
             this.internalResistance = randomIn.Next(0, 40);
 
             this.customerPreferences = new Recipe();

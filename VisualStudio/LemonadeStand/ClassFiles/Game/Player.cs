@@ -21,6 +21,7 @@ namespace LemonadeStand.ClassFiles.Game
         public Pitcher pitcher;
         public double businessProfits;
         public double recipeCost;
+        public bool recipeIsSet;
 
         public Player()
         {
@@ -66,54 +67,115 @@ namespace LemonadeStand.ClassFiles.Game
 
         public void SetRecipe()
         {
-            //Console.WriteLine("enter the number of lemons in your recipe:");
-            //recipe.amountOfLemons = Int32.Parse(Console.ReadLine());
-            recipe.amountOfLemons = Int32.Parse(Validation.GetUserInput("Enter the number of lemons in your recipe: ", "int"));
+            //bool recipeIsSet = false;
+            recipeIsSet = false;
+            do
+            {
+                try
+                {
 
-            //Console.WriteLine("enter the number of sugar cubes in your recipe: ");
-            //recipe.amountOfSugarCubes = Int32.Parse(Console.ReadLine());
-            recipe.amountOfSugarCubes = Int32.Parse(Validation.GetUserInput("Enter the number of sugar cubes in your recipe: ", "int"));
 
-            //Console.WriteLine("enter the number of ice cubes in your recipe: ");
-            //recipe.amountOfIceCubes = Int32.Parse(Console.ReadLine());
-            recipe.amountOfIceCubes = Int32.Parse(Validation.GetUserInput("enter the number of ice cubes in your recipe: ", "int"));
+                    //Console.WriteLine("enter the number of lemons in your recipe:");
+                    //recipe.amountOfLemons = Int32.Parse(Console.ReadLine());
+                    recipe.amountOfLemons = Int32.Parse(Validation.GetUserInput("Enter the number of lemons in your recipe: ", "int"));
 
-            //Console.WriteLine("enter the price per cup of your recipe:");
-            //recipe.pricePerCup = Double.Parse(Console.ReadLine());
+                    //Console.WriteLine("enter the number of sugar cubes in your recipe: ");
+                    //recipe.amountOfSugarCubes = Int32.Parse(Console.ReadLine());
+                    recipe.amountOfSugarCubes = Int32.Parse(Validation.GetUserInput("Enter the number of sugar cubes in your recipe: ", "int"));
 
-            Console.WriteLine("");
-            Console.WriteLine("");
-            Console.WriteLine("");
+                    //Console.WriteLine("enter the number of ice cubes in your recipe: ");
+                    //recipe.amountOfIceCubes = Int32.Parse(Console.ReadLine());
+                    recipe.amountOfIceCubes = Int32.Parse(Validation.GetUserInput("enter the number of ice cubes in your recipe: ", "int"));
+
+                    //Console.WriteLine("enter the price per cup of your recipe:");
+                    //recipe.pricePerCup = Double.Parse(Console.ReadLine());
+                    if (recipe.amountOfLemons > 0 && recipe.amountOfSugarCubes > 0 && recipe.amountOfIceCubes > 0)
+                    {
+                        recipeIsSet = true;
+                    }
+                    else
+                    {
+                        recipeIsSet = false;
+                        SetRecipe();
+                    }
+                }
+                catch(FormatException)
+                {
+                    recipeIsSet = false;
+                }
+                finally
+                {
+                    if (!recipeIsSet)
+                    {
+                        SetRecipe();
+                    }
+                }
+
+                Console.WriteLine("");
+                Console.WriteLine("");
+                Console.WriteLine("");
+
+            } while (!recipeIsSet);
+            
 
         }
 
         public void SetPricePerCup()
         {
+            bool priceIsSet = false;
             double tempPrice = 0.0;
-            Console.WriteLine("How much would you like to charge per cup?");
 
-            try
+            do
             {
-                tempPrice = Double.Parse(Console.ReadLine());
-            }
-            catch(Exception)
-            {
-                tempPrice = -1.0;
-            }
-            finally
-            {
-                if (tempPrice > 0.0)
+                tempPrice = Double.Parse(Validation.GetUserInput("How much would you like to charge per cup?", "str"));
+                if (tempPrice >= 0.0)
                 {
-                    recipe.pricePerCup = tempPrice;
-                }
-                else
-                {
-                    SetPricePerCup();
-                }
-            }
+                    try
+                    {
+                        recipe.pricePerCup = tempPrice;                       
+                    }
+                    catch (FormatException)
+                    {
+                        priceIsSet = false;
+                    }
+                    finally
+                    {
+                        if (recipe.pricePerCup >= 0.0)
+                        {
+                            priceIsSet = true;
+                        }
+                        else
+                        {
+                            SetPricePerCup();
+                        }
+                    }
+                }   
+            } while (!priceIsSet);
         }
 
-        public string RecipeReport()
+                //Console.WriteLine("How much would you like to charge per cup?");
+
+            //try
+            //{
+            //    tempPrice = Double.Parse(Console.ReadLine());
+            //}
+            //catch(Exception)
+            //{
+            //    tempPrice = -1.0;
+            //}
+            //finally
+            //{
+            //    if (tempPrice > 0.0)
+            //    {
+            //        recipe.pricePerCup = tempPrice;
+            //    }
+            //    else
+            //    {
+            //        SetPricePerCup();
+            //    }
+            //}
+
+            public string RecipeReport()
         {
             return (Environment.NewLine + GetRecipe() + Environment.NewLine +
                 "You will charge $" + recipe.pricePerCup + " per cup." + Environment.NewLine);

@@ -198,16 +198,18 @@ namespace LemonadeStand.ClassFiles.Game.Store
             Console.WriteLine("");
             Console.WriteLine("");
             
-            Console.WriteLine("Would you like to change your recipe?");
-            if (Console.ReadLine()=="y")
+            //Console.WriteLine("Would you like to change your recipe?");
+            //if (Console.ReadLine()=="y")
+            if (Validation.GetUserInput("Would you like to set or change your recipe?", "str")=="y")
             {
                 player.SetRecipe();
             }
 
             Console.WriteLine("");
 
-            Console.WriteLine("Would you like to set the price per cup?");
-            if (Console.ReadLine()=="y")
+            //Console.WriteLine("Would you like to set or change the price per cup?");
+            //if (Console.ReadLine()=="y")
+            if (Validation.GetUserInput("Would you like to set or change the price per cup?", "str") == "y")
             {
                 player.SetPricePerCup();
             }
