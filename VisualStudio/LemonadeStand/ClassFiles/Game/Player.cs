@@ -210,7 +210,7 @@ namespace LemonadeStand.ClassFiles.Game
                 "Profit: $" + profitIn.ToString() + Environment.NewLine + 
                 "Cups sold: " + positiveInteractionsIn.ToString() + Environment.NewLine + 
                 "Cups dumped: " + cupsDumpedIn.ToString() + Environment.NewLine + 
-                "Loss: " + tempLossIn.ToString() + Environment.NewLine +
+                "Loss: $" + tempLossIn.ToString() + Environment.NewLine +
                 "Total Customers: " + numCustIn.ToString() + Environment.NewLine +
                 "Negative Interactions: " + negativeInteractionsIn.ToString() + Environment.NewLine +
                 "**END OF REPORT**" + Environment.NewLine + Environment.NewLine);

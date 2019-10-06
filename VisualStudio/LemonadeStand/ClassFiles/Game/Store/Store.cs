@@ -180,32 +180,24 @@ namespace LemonadeStand.ClassFiles.Game.Store
 
         private void LeaveTheStore()
         {
-            bool recipeIsSet = false;
-            bool priceIsSet = false;
             Console.WriteLine("");
             Console.WriteLine("");
 
-            do
-            {
-                if (Validation.GetUserInput("Would you like to set or change your recipe?", "str") == "y")
+            if (Validation.GetUserInput("Would you like to set or change your recipe?", "str") == "y")
                 {
                     player.SetRecipe();
-                    recipeIsSet = true;
                 }
 
                 Console.WriteLine("");
-            } while (!recipeIsSet);
+            
 
-            do
-            {
-                if (Validation.GetUserInput("Would you like to set or change the price per cup?", "str") == "y")
+            
+            if (Validation.GetUserInput("Would you like to set or change the price per cup?", "str") == "y")
                 {
                     player.SetPricePerCup();
-                    priceIsSet = true;
                 }
 
-                Console.WriteLine("");
-            } while (!priceIsSet);            
+            Console.WriteLine("");  
         }
     }
 }
